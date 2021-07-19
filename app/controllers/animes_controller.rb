@@ -1,12 +1,17 @@
-class HomeController < ApplicationController
-  before_action :user
+class AnimesController < ApplicationController
   before_action :set_q
+  before_action :user
 
-  def show
+  def index
+    @animes = Anime.all
   end
 
   def search
     @results = @q.result(distinct: true)
+  end
+
+  def show
+    @anime = Anime.find(params[:id])
   end
  
   private

@@ -23,9 +23,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label :アイコンを変更する %><br>
     <%= f.file_field :image %>
   </div>
+
+  <% if @user.image? %>
+    <div class="field">
+      <%= f.label :アイコンを削除する %><br>
+      <%= f.check_box :remove_image %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />

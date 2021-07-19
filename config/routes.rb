@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  get 'home/show'
-  #get 'users/show'
-  #devise_for :users, controllers: {
-    #sessions: 'users/sessions'
-  #}
+  root 'home#show'
+
   devise_for :users, controllers: { registrations: 'users/registrations',
   sessions: 'users/sessions',
   passwords: 'users/passwords' }
   get "users/show" => "users#show"
+
   resources :users
-  root 'home#show'
+  resources :posts
+  resources :animes do
+    collection do
+      get 'animes/search'=> 'animes#search'
+    end
+  end
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end

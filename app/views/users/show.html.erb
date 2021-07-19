@@ -1,17 +1,23 @@
-<h1>ユーザーページ</h1>
+<h1>マイページ</h1>
 
 <div class="profile_box">
   <div class="profile_content">
     <h3>ユーザーネーム</h3>
-    <p><%= "#{current_user.name}" %></p>
+    <p><%= "#{@current_user.name}" %></p>
   </div>
   <div class="profile_content">
     <h3>プロフィール</h3>
-    <p><%= "#{current_user.profile}" %></p>
+    <p><%= "#{@current_user.profile}" %></p>
   </div>
 </div>
 
-<% unless @user.name=="ゲスト" %>
+<% if @current_user.image? %>
+  <p>
+    <%= image_tag @current_user.image.url %>
+  </p>
+<% end %>
+
+<% unless @current_user.name=="ゲスト" %>
   <div class="back">
     <%= link_to 'プロフィール変更', edit_user_registration_path %>
   </div>
