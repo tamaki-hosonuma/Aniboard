@@ -1,0 +1,31 @@
+<h1>投稿の編集</h1>
+<div>
+    <%= form_with(model: [@anime, @post], url: anime_post_path(@post), local: true) do |f| %>
+        <p>
+        <%= f.text_field :anime_title, value: "#{@anime.title}" %>
+        </p>
+        <p>
+        <%= f.text_field :title, placeholder: "#{@post.title}" %>
+        </p>
+        <p>
+        <%= f.text_area :body, placeholder: "#{@post.body}" %>
+        </p>
+            <%= f.hidden_field :anime_id, value: @anime.id %>
+            <%= f.hidden_field :user_id, value: @user.id %>
+            <div id="edit-rate-<%= @post.id%>">
+                <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+            </div>
+            <%# パーシャル化する %>
+            <script>
+              $('#edit-rate-<%= @post.id %>').raty({
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                score: <%= @post.rate %>,
+                scoreName: 'post[rate]'
+              });
+            </script>
+        <%= f.submit "更新する" %>
+    <% end %>
+</div>

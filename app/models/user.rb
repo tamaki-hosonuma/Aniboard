@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :animes
-  has_many :posts
+  has_many :animes, dependent: :destroy
+  has_many :posts, dependent: :destroy
   mount_uploader :image, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

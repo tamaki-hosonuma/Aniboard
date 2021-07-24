@@ -1,0 +1,20 @@
+<div>
+  <p>タイトル:<%= @post.title %></p>
+  <p>感想 :<%= @post.body %></p>
+  <p>評価 :<%= @post.rate %></p>
+  <div id="star-rate<%= @post.id%>"></div>    
+
+    <%# パーシャル化する %>
+  <script>
+    $('#star-rate<%= @post.id%>').raty({
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= @post.rate %>,
+    });
+  </script>
+</div>
+<%= link_to '削除', anime_post_path(@post), method: :delete %>
+<%= link_to "マイページに戻る", users_show_path(@user.id) %>

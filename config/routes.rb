@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   passwords: 'users/passwords' }
   get "users/show" => "users#show"
 
-  resources :users
-  resources :posts
+  resources :users 
+
   resources :animes do
     collection do
       get 'animes/search'=> 'animes#search'
     end
+    resources :posts
   end
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'

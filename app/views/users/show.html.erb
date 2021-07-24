@@ -1,5 +1,9 @@
 <h1>マイページ</h1>
 
+<% if flash[:success] %>
+  <p><%= flash[:success] %></p>
+<% end %>
+
 <div class="profile_box">
   <div class="profile_content">
     <h3>ユーザーネーム</h3>
@@ -22,6 +26,30 @@
     <%= link_to 'プロフィール変更', edit_user_registration_path %>
   </div>
 <% end%>
+
+<% @user.posts.each do |post| %>
+  <p><%= post.title %></p>
+  <p><%= post.body %></p>
+  <p><%= post.anime_id %></p>
+  <div id="star-rate<%= post.id %>"></div>    
+
+  <%# パーシャル化する %>
+  <script>
+    $('#star-rate<%= post.id%>').raty({
+      starOff   : '<%= asset_path('star-off.png') %>',
+      starOn    : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= post.rate %>,
+    });
+  </script>
+  </div>
+  <%= link_to '更新', edit_anime_post_path(post.anime_id, post.id) %>
+  <%= link_to '削除', anime_post_path(post.anime_id, post.id), method: :delete %>
+<% end %>
+
+
 
 <div class="back">
   <%= link_to "ホームへ戻る", '/' %>
