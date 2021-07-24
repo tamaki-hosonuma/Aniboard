@@ -1,0 +1,34 @@
+
+<%= "#{@anime.id}" %>
+
+<div>
+    <%= form_with(model: [@anime, @post], local: true) do |f| %>
+        <p>
+        <%= f.text_field :anime_title, value: "#{@anime.title}" %>
+        </p>
+        <p>
+        <%= f.text_field :title, placeholder: "タイトル" %>
+        </p>
+        <p>
+        <%= f.text_area :body, placeholder: "感想" %>
+        </p>
+            <%= f.hidden_field :anime_id, value: @anime.id %>
+            <%= f.hidden_field :user_id, value: @user.id %>
+            <div id="star_rate">
+                <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+                <%# <%= f.hidden_field :rate, id: :star_rate %>
+            </div>
+        <%= f.submit "投稿する" %>
+    <% end %>
+</div>
+
+<script>
+    $('#star_rate').raty({
+        size: 38,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'post[rate]',
+        half: true,
+    });
+</script>

@@ -1,15 +1,13 @@
-<h4>アニメ詳細</h4>
-<%= @anime.title %>
+<h1>感想一覧</h1>
 
-<%= link_to "感想を投稿する", new_anime_post_path(anime_id: "#{@anime.id}") %>
-
-<% @anime.posts.each do |post| %>
+<% @posts.each do |post| %>
 
   <div>
     <p>タイトル:<%= post.title %></p>
     <p>感想 :<%= post.body %></p>
     <p>評価 :<%= post.rate %></p>
     <div id="star-rate<%= post.id%>"></div>    
+
     <script>
       $('#star-rate<%= post.id%>').raty({
         starOff   : '<%= asset_path('star-off.png') %>',
