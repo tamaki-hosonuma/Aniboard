@@ -30,8 +30,9 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'dotenv-rails'
 gem 'syobocal'
-gem 'rails-pry'
+gem 'pry-rails'
 gem 'ransack'
+gem 'rakuten_web_service'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

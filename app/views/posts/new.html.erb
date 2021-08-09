@@ -1,10 +1,7 @@
-
-<%= "#{@anime.id}" %>
-
 <div>
     <%= form_with(model: [@anime, @post], local: true) do |f| %>
         <p>
-        <%= f.text_field :anime_title, value: "#{@anime.title}" %>
+        <%= f.text_field :anime_title, value: "#{@anime.title}", :readonly => true %>
         </p>
         <p>
         <%= f.text_field :title, placeholder: "タイトル" %>

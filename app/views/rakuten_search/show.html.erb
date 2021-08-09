@@ -1,0 +1,6 @@
+ <% @dvds.each do |dvd| %>
+  <p><%= dvd.title %></p>
+  <p><%= dvd.label %></p>
+  <p><%= dvd.item_caption %></p> 
+  <p><%= link_to (image_tag(dvd.medium_image_url)), dvd.item_url %></p>
+<% end %>

@@ -1,24 +1,27 @@
-<h4>アニメ詳細</h4>
-<%= @anime.title %>
-
-<%= link_to "感想を投稿する", new_anime_post_path(anime_id: "#{@anime.id}") %>
-
-<% @anime.posts.each do |post| %>
-
-  <div>
-    <p>タイトル:<%= post.title %></p>
-    <p>感想 :<%= post.body %></p>
-    <p>評価 :<%= post.rate %></p>
-    <div id="star-rate<%= post.id%>"></div>    
-    <script>
-      $('#star-rate<%= post.id%>').raty({
-        starOff   : '<%= asset_path('star-off.png') %>',
-        starOn    : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        half: true,
-        readOnly: true,
-        score: <%= post.rate %>,
-      });
-    </script>
+<div class="anime-main">
+  <h4>アニメ詳細</h4>
+  <div class="anime-box">
+    <p class="anime-title"><%= @anime.title %></p>
+    <%= link_to "感想を投稿する", new_anime_post_path(anime_id: "#{@anime.id}"), class:"btn" %>
+    <%= link_to "楽天DVDを表示", rakuten_search_path(keyword: @anime.title, anime_id: @anime.id), class:"btn" %>
+    <div class="post-box">
+    <% if @anime.posts.present? %>
+      <% @anime.posts.each do |post| %>
+        <%# カードにできるかな？ %>
+        <%= render partial: 'shared/post_show', locals: {post: post} %>
+        <div id="likes_buttons_<%= post.id %>">
+          <%= render partial: 'likes/like', locals: {post: post} %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだ投稿がありません。ぜひ投稿してね</p>
+      <%= link_to(:back, class:"btn") do %>
+        <p><i class="fas fa-reply"></i>アニメ検索一覧へ</p>
+      <% end %>
+    <% end %>
+    </div>
   </div>
-<% end %>
+  <%= link_to(root_path, class:"btn") do %>
+   <p><i class="fas fa-reply"></i>ホームへ</p>
+  <% end %>
+</div>

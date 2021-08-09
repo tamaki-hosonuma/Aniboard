@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @anime = Anime.find(params[:anime_id])
+    @post_user = User.find_by(params[:name])
   end
 
   def new
@@ -54,6 +55,10 @@ class PostsController < ApplicationController
       flash[:success] = "削除しました"
       redirect_to user_path  
     end
+  end
+
+  def post_user
+    @post_user = User.find(params[:id])
   end
 
   private

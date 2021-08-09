@@ -12,6 +12,7 @@ class AnimesController < ApplicationController
 
   def show
     @anime = Anime.find(params[:id])
+    @post_user = User.find_by(params[:name])
   end
  
   private

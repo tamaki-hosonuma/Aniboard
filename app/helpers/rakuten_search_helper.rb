@@ -1,0 +1,2 @@
+module RakutenSearchHelper
+end

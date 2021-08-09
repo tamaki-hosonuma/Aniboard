@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   before_action :set_q
 
   def show
+    @recent_posts = Post.order(created_at: :desc).limit(4)
+    @post_user = User.find_by(params[:name])
   end
 
   def search
