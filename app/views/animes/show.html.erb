@@ -1,0 +1,29 @@
+<div class="anime-main">
+  <div class="anime-box">
+    <h4 class="anime-title"><%= @anime.title %></h4>
+    <%= link_to "感想を投稿する", new_anime_post_path(anime_id: "#{@anime.id}"), class:"btn mt-4 mb-4" %>
+    <%= link_to "楽天DVDを表示", rakuten_search_path(keyword: @anime.title, anime_id: @anime.id), class:"btn mt-4 mb-4" %>
+    <div class="post-box">
+      <h5 class="pt-2 pb-2">投稿一覧</h5>
+        <% if @anime.posts.present? %>
+          <div class="col-12 col-md-12 col-xl-6 post-card mt-3 mb-2">
+            <% @anime.posts.each do |post| %>
+              <h5 class="text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.title %></h5>
+              <%= render partial: 'shared/post_show', locals: {post: post} %>
+              <div id="likes_buttons_<%= post.id %>">
+                <%= render partial: 'likes/like', locals: {post: post} %>
+          </div>
+            <% end %>
+        <% else %>
+          <p class="pt-2 pb-2">まだ投稿がありません  ぜひ投稿してね</p>
+          <%= link_to(:back, class:"btn") do %>
+            <p><i class="fas fa-reply"></i>アニメ検索一覧へ</p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= link_to(root_path, class:"btn") do %>
+   <p><i class="fas fa-reply"></i>ホームへ</p>
+  <% end %>
+</div>

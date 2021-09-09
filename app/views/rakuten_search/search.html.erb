@@ -1,0 +1,4 @@
+<%= form_with(url: rakuten_search_path, method: :get, local: true) do |f| %>
+  <%= f.hidden_field :keyword, value: @anime.title %>
+  <%= f.submit "アニメページへ" %>
+<% end %>

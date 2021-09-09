@@ -1,0 +1,19 @@
+#処理を分けたい。ページもしくは動作で。
+
+<h6 class="card-subtitle mb-2">「<%= post.title %>」</h6>
+<p>投稿者：<%= link_to "#{post.user.name}",  anime_post_post_user_path(anime_id: post.anime.id, id: post.user_id, post_id: post.id ) %></p>
+<p class="mb-1">評価 : <%= post.rate %></p>
+<p id="star-rate<%= post.id %>"></p>    
+<p class="card_text mt-3"><%= safe_join(post.body.split("\n"),tag(:br)) %></p>
+<script>
+  $('#star-rate<%= post.id %>').raty({
+    starOff   : '<%= asset_path('star-off.png') %>',
+    starOn    : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= post.rate %>,
+  });
+</script>
+
+

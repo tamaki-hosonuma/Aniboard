@@ -1,22 +1,30 @@
-<h1>ユーザーページ</h1>
-
-<div class="profile_box">
-  <div class="profile_content">
-    <h3>ユーザーネーム</h3>
-    <p><%= "#{current_user.name}" %></p>
+<div class="user-page container container-fluid d-flex">
+  <%# fixで場所固定の必要あり %>
+  <%= render partial: 'shared/users_side_bar' %>
+  
+  <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
+    <h2 class="pb-3"><%= "#{@user.name}" %></h2>
+    <% if flash[:success] %>
+      <p><%= flash[:success] %></p>
+    <% end %>
+    <div class="profile_box text-center">
+      <p class="image-box">
+        <% if @user.image? %>
+            <%= image_tag @user.image.url, class: "col-3 col-md-3 col-xl-3" %>
+        <% else %>
+          <%= image_tag "/assets/default.jpg", class: "col-3 col-md-3 col-xl-3" %>
+        <% end %>
+      </p>
+      <p><%= @user.email %></p>
+      <h5 class="pt-4">Profile</h5>
+      <p>
+        <%= safe_join("#{@user.profile}".split("\n"),tag(:br))%>
+      </p>
+      <% unless @current_user.name=="ゲスト" %>
+        <p>
+          <%= link_to 'プロフィール変更', edit_user_registration_path %>
+        </p>
+      <% end%>
+    </div>
   </div>
-  <div class="profile_content">
-    <h3>プロフィール</h3>
-    <p><%= "#{current_user.profile}" %></p>
-  </div>
-</div>
-
-<% unless @user.name=="ゲスト" %>
-  <div class="back">
-    <%= link_to 'プロフィール変更', edit_user_registration_path %>
-  </div>
-<% end%>
-
-<div class="back">
-  <%= link_to "ホームへ戻る", '/' %>
 </div>
