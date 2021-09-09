@@ -15,16 +15,15 @@
           <%= image_tag "/assets/default.jpg", class: "col-3 col-md-3 col-xl-3" %>
         <% end %>
       </p>
+      <p><%= @user.email %></p>
       <h5 class="pt-4">Profile</h5>
       <p>
         <%= safe_join("#{@user.profile}".split("\n"),tag(:br))%>
       </p>
       <% unless @current_user.name=="ゲスト" %>
-        <% if user_signed_in? %>
         <p>
           <%= link_to 'プロフィール変更', edit_user_registration_path %>
         </p>
-        <% end%>
       <% end%>
     </div>
   </div>

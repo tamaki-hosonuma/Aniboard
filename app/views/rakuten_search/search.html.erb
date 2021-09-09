@@ -1,8 +1,4 @@
-  <%= form_with(url: rakuten_search_path, method: :get, local: true) do |f| %>
-    <%= f.hidden_field :keyword, value: @anime.title %>
+<%= form_with(url: rakuten_search_path, method: :get, local: true) do |f| %>
+  <%= f.hidden_field :keyword, value: @anime.title %>
   <%= f.submit "アニメページへ" %>
-  <% end %>
-
-      <%# <div class="list">
-      <% if good.image_url %>
-        <%#= link_to (image_tag(good.image_url, style: "width: 70px;height: 100px;display: inline-block;")), good.url %>
+<% end %>

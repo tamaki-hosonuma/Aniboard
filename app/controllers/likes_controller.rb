@@ -12,6 +12,9 @@ class LikesController < ApplicationController
     @like.destroy
   end
 
+  def show
+  end
+
   private
   def user
     @user = current_user

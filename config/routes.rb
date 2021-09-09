@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   sessions: 'users/sessions',
   passwords: 'users/passwords' }
   get "users/show" => "users#show"
+  as :user do
+    get 'users', :to => 'users#show', :as => :user_root
+  end
  
   resources :users do 
     collection do
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   post 'like/:id' => 'likes#create', as: 'create_like'
+  get 'like/:id' => 'likes#create', as: 'show_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
   
   devise_scope :user do

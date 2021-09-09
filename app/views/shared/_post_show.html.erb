@@ -1,3 +1,5 @@
+#処理を分けたい。ページもしくは動作で。
+
 <h6 class="card-subtitle mb-2">「<%= post.title %>」</h6>
 <p>投稿者：<%= link_to "#{post.user.name}",  anime_post_post_user_path(anime_id: post.anime.id, id: post.user_id, post_id: post.id ) %></p>
 <p class="mb-1">評価 : <%= post.rate %></p>

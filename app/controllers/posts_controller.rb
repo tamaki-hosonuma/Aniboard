@@ -27,7 +27,7 @@ class PostsController < ApplicationController
       redirect_to anime_path(@anime.id)
       flash[:notice] = "投稿が完了しました"
     else
-      redirect_to new_anime_post_path
+      render "new"
       flash[:notice] = "投稿に失敗しました"
     end
   end

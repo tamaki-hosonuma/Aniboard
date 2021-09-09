@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, length: { minimum: 6 }, on: :create
   validates :profile, length: { maximum: 200 }
 
   def self.guest
