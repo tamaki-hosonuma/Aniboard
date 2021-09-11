@@ -14,5 +14,4 @@ class RakutenSearchController < ApplicationController
   def user
     @user = current_user
   end
-
 end

@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     if @post.user_id == @user.id
       @post.destroy
       flash[:success] = "削除しました"
-      redirect_to user_path  
+      redirect_to user_path
     end
   end
 
@@ -62,16 +62,12 @@ class PostsController < ApplicationController
   end
 
   private
+
   def user
     @user = current_user
   end
 
   def post_params
     params.require(:post).permit(:title, :body, :anime_title, :anime_id, :user_id, :rate)
-    # params.require(:post).permit(:title, :body, :rate, :anime_title)
   end
-
-  # def set_anime
-  #   @anime = Anime.find(params[:id])
-  # end
 end

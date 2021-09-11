@@ -5,6 +5,6 @@ FactoryBot.define do
     title { "Test" }
     body { "Test is interesting" }
     rate { "2" }
-    anime_title {"日常"}
+    anime_title { "日常" }
   end
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   describe "user registration" do
     it "is registered if name, email and password are exist" do
       user = build(:user)
@@ -13,7 +12,7 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:name]).to include("を入力してください")
     end
- 
+
     it "is invalid with a duplicate email address" do
       User.create(
         name: "Joe",

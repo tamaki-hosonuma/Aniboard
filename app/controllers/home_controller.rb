@@ -10,8 +10,9 @@ class HomeController < ApplicationController
   def search
     @results = @q.result(distinct: true)
   end
- 
+
   private
+
   def set_q
     @q = Anime.ransack(params[:q])
   end
@@ -19,5 +20,4 @@ class HomeController < ApplicationController
   def user
     @user = current_user
   end
-
 end

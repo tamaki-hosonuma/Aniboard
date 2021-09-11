@@ -6,11 +6,13 @@ RSpec.describe 'Posts', type: :system, js: true do
     login(@user)
     @anime = create(:anime)
   end
+
   describe "display post successfully" do
     context "post exist" do
       before do
         create(:post, user_id: @user.id, anime_id: @anime.id)
       end
+
       it "display post " do
         visit root_path
         fill_in "q_title_cont", with: "日常"
@@ -30,5 +32,4 @@ RSpec.describe 'Posts', type: :system, js: true do
       end
     end
   end
-
 end

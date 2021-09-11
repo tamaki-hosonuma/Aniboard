@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-  #アカウント作成、ログイン
   describe "new regstration" do
     it "sign up" do
       user = build(:user)
@@ -30,7 +29,6 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_selector("img[src$='assets/default.jpg']")
     end
 
-    #プロフィールが変更できること
     describe "change account information" do
       before do
         click_on "プロフィール変更"
@@ -73,8 +71,7 @@ RSpec.describe 'Users', type: :system do
         expect(@post.user.valid_password?("testuser")).to eq(false)
         expect(@post.user.valid_password?("abcdefg")).to eq(true)
       end
-      
-      #パスワードなしではプロフィール変更ができないこと
+
       it "don't change profile without current_password" do
         fill_in "user_name", with: "change_name"
         fill_in "user_email", with: "test@test.com"
@@ -85,11 +82,9 @@ RSpec.describe 'Users', type: :system do
         click_on "更新する"
         expect(page).to have_content "保存できませんでした"
       end
-
     end
   end
 
-  #ゲストユーザーならプロフィールが変更できないこと
   describe "guest user can't change user profile" do
     it "is not button プロフィール変更" do
       visit edit_user_registration_path
@@ -97,5 +92,4 @@ RSpec.describe 'Users', type: :system do
       expect(page).not_to have_content "プロフィール変更"
     end
   end
-
 end

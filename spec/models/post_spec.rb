@@ -18,7 +18,6 @@ RSpec.describe Post, type: :model do
       expect(post).to be_valid
     end
 
-    
     it "doesn’t create post if body is more than 1501 characters" do
       post = build(:post, body: "a" * 1501)
       expect(post).to be_invalid
