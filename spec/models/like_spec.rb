@@ -5,6 +5,7 @@ RSpec.describe Like, type: :model do
     before do
       @like = build(:like)
     end
+
     it "create successfully" do
       expect(create(:like)).to be_valid
     end

@@ -16,6 +16,7 @@ class LikesController < ApplicationController
   end
 
   private
+
   def user
     @user = current_user
   end
@@ -23,5 +24,4 @@ class LikesController < ApplicationController
   def post_params
     @post = Post.find(params[:id])
   end
-
 end

@@ -5,5 +5,4 @@ class Anime < ApplicationRecord
   def self.search(keyword)
     where(["title like?", "%#{keyword}%"])
   end
-
 end

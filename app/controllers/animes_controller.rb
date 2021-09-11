@@ -14,8 +14,9 @@ class AnimesController < ApplicationController
     @anime = Anime.find(params[:id])
     @post_user = User.find_by(params[:name])
   end
- 
+
   private
+
   def set_q
     @q = Anime.ransack(params[:q])
   end
@@ -23,5 +24,4 @@ class AnimesController < ApplicationController
   def user
     @user = current_user
   end
-
 end
