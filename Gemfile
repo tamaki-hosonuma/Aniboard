@@ -40,7 +40,7 @@ group :development, :test do
   gem 'rubocop-airbnb'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'sqlite3', '~> 1.4'
+  gem 'pg', '~> 1.2.3'
 end
 
 group :development do
@@ -62,7 +62,7 @@ end
 
 group :production do
   #gem 'pg'
-  gem 'sqlite3', '~> 1.4'
+  gem 'pg', '~> 1.2.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

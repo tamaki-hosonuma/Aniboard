@@ -160,6 +160,7 @@ GEM
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
+    pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     pry (0.13.1)
@@ -282,7 +283,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     ssrf_filter (1.0.7)
     syobocal (0.13.0)
     thor (1.1.0)
@@ -332,6 +332,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   mini_magick
+  pg (~> 1.2.3)
   pry-rails
   puma (~> 4.1)
   rails (~> 6.0.4)
@@ -343,7 +344,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
   syobocal
   turbolinks (~> 5)
   tzinfo-data
@@ -355,4 +355,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.16
+   2.2.27
