@@ -80,13 +80,13 @@ jobs:
       # up before we run operations on the database.
       # データベースをセットアップします
 
-  - run:
-      name: DB の待機
-      command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: DB の待機
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
-  - run:
-      name: データベースのセットアップ
-      command: bin/rails db:schema:load --trace
+      - run:
+          name: データベースのセットアップ
+          command: bin/rails db:schema:load --trace
 workflows:
   version: 2
   build_and_test:     # The name of our workflow is "build_and_test"
