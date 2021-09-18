@@ -1,6 +1,7 @@
 version: '3'
 volumes:
   vendor_bundle:
+  vendor_assets:
 services:
   postgres:
     image: postgres
@@ -15,6 +16,7 @@ services:
     volumes:
       - .:/aniboard
       - vendor_bundle:/aniboard-portfolio/vendor/bundle
+      - vendor_assets:/aniboard-portfolio/vendor/assets
     ports:
       - "3000:3000"
     depends_on:
