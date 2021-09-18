@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_07_28_021922) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "animes", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 2021_07_28_021922) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "rate", default: 0.0, null: false
-    t.integer "user_id"
-    t.integer "anime_id"
+    t.bigint "user_id"
+    t.bigint "anime_id"
     t.index ["anime_id"], name: "index_posts_on_anime_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
