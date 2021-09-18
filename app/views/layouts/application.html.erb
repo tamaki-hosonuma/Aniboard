@@ -26,7 +26,8 @@
                     <% if @user.image? %>
                       <%= image_tag @user.image.thumb.url %>
                     <% else %>
-                      <%= image_tag "/assets/default.jpg", :size => '50x50' %>
+                      <%= image_tag asset_path("default.jpg"), :size => '50x50' %>
+                      <%# <%= image_tag "/assets/default.jpg", :size => '50x50' %>
                     <% end %>
                   </li>
                   <li class="nav-item">
