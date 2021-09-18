@@ -1,4 +1,17 @@
-version: 2
+version: 2.1
+orbs:
+  build-tools: circleci/build-tools@2.6.3
+  jq: circleci/jq@1.9.1
+workflows:
+  build:
+    jobs:
+      - rspec
+      - rubocop
+      - heroku_deploy:
+          requires:
+            - rspec
+            - rubocop
+
 jobs:
   rspec:
     working_directory: ~/aniboard
@@ -84,17 +97,4 @@ jobs:
             heroku config:set AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
             heroku run bin/rails db:migrate
             heroku run bin/rails db:seed
-            
-  orbs:
-    build-tools: circleci/build-tools@2.6.3
-    jq: circleci/jq@1.9.1
-  workflows:
-    version: 2.1
-    build:
-      jobs:
-        - rspec
-        - rubocop
-        - heroku_deploy:
-            requires:
-              - rspec
-              - rubocop
+
