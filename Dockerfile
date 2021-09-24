@@ -4,7 +4,8 @@ RUN mkdir /aniboard
 WORKDIR /aniboard
 COPY Gemfile /aniboard/Gemfile
 COPY Gemfile.lock /aniboard/Gemfile.lock
-RUN gem install bundler
+ENV BUNDLER_VERSION 2.2.3
+RUN gem install bundler -v $BUNDLER_VERSION
 RUN bundle install
 COPY . /aniboard
 COPY entrypoint.sh /usr/bin/

@@ -1,22 +1,25 @@
 version: '3'
 volumes:
-  vendor_bundle:
-  vendor_assets:
+  postgres:
+  bundle_install:
+    driver: local
+
 services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgres/data
+      - postgres:/var/lib/postgres
+    ports:
+      - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: postgres 
+      POSTGRES_PASSWORD: postgres
  
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/aniboard
-      - vendor_bundle:/aniboard-portfolio/vendor/bundle
-      - vendor_assets:/aniboard-portfolio/vendor/assets
+      - bundle_install:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
@@ -29,4 +32,4 @@ services:
   chrome:
     image: selenium/standalone-chrome:3.141.59-dubnium
     ports:
-      - 4444:4444
+      - "4444:4444"
