@@ -33,33 +33,32 @@ a:link, a:visited, a:hover, a:active {
 
 input[type="text"]{
   height: 30px;
-  width:500px;
+  width: 100%;
 }
 
 input[type="password"]{
   height: 30px;
-  width:500px;
+  width: 100%;
 }
 
 input[type="email"]{
   height: 30px;
-  width:500px;
+  width: 100%;
 }
 
 textarea{
   height: 200px;
-  width:500px;
-}
-
-.field{
-  padding-top: 10px; 
-}
-
-.actions{
-  padding-top: 20px; 
+  width:100%;
 }
 
 .jumbotron{
   background-image: image-url('835369.jpg');
   background-position: top center;
+}
+
+footer{
+  background-color: #FFC107;
+  color: #fff;
+  text-align: center;
+  height: 30px;
 }
