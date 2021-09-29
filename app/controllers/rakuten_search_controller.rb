@@ -2,9 +2,7 @@ class RakutenSearchController < ApplicationController
   before_action :user
   def search
     @anime = Anime.find(params[:anime_id])
-    if params[:keyword]
-      @dvds = RakutenWebService::Books::DVD.search(title: params[:keyword])
-    end
+    @dvds = RakutenWebService::Books::DVD.search(title: params[:keyword])
     render 'rakuten_search/show'
   end
 
