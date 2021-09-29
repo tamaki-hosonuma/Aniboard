@@ -1,6 +1,7 @@
 <div class="container">
   <h4 class="search-result">検索結果</h4>
   <div class="row dvd-main justify-content-center">
+    <h5 class="result-count"><%= @dvds.count %>件</h5>
     <% @dvds.each do |dvd| %>
       <div class="dvd-box card col-5 col-md-5 col-xl-3 m-2">
         <div class="card-body">

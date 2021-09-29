@@ -6,10 +6,9 @@
     <div class="post-box">
       <h5 class="pt-2 pb-2">投稿一覧</h5>
         <% if @anime.posts.present? %>
-          <div class="col-12 col-md-12 col-xl-6 post-card mt-3 mb-2">
+          <div class="col-12 col-md-12 col-xl-6 post-card mt-3 mb-2 ps-2">
             <% @anime.posts.each do |post| %>
               <h5 class="text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.title %></h5>
-              <%# ここにアニメ投稿タイトルも入れる %>
               <%= render partial: 'shared/post_show', locals: {post: post} %>
               <div id="likes_buttons_<%= post.id %>" class="text-start">
                 <%= render partial: 'likes/like', locals: {post: post} %>
@@ -24,7 +23,9 @@
       </div>
     </div>
   </div>
-  <%= link_to(root_path, class:"btn") do %>
-   <p><i class="fas fa-reply"></i>ホームへ</p>
-  <% end %>
+  <div class="text-start">
+    <%= link_to(root_path, class:"btn") do %>
+    <p class="text-start"><i class="fas fa-reply"></i>ホームへ</p>
+    <% end %>
+  </div>
 </div>
