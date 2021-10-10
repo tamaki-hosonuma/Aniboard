@@ -1,17 +1,18 @@
 @import './home';
 @import './animes';
-@import './posts';
 @import './users';
 @import './likes';
 @import './rakuten_search';
 
-#FFC107 #FFA000 #26C6DA
 a{
   text-decoration: none;
 }
 
-.jumbotron{
-  min-height: 100vh;
+.bg-img{
+  background-image: image-url('835369.jpg');
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 li{
@@ -51,14 +52,26 @@ textarea{
   width:100%;
 }
 
-.jumbotron{
-  background-image: image-url('835369.jpg');
-  background-position: top center;
-}
-
 footer{
   background-color: #FFC107;
   color: #fff;
   text-align: center;
   height: 30px;
+}
+
+p{
+  font-size: 1em;
+}
+
+a{
+  font-size: 1em;
+}
+
+.nav-link{
+  padding: auto;
+  color: #FFA000;
+}
+
+.container-fluid > .rogo-title{
+  color: #FFA000;
 }
