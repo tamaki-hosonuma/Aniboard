@@ -1,19 +1,18 @@
- <nav class="sidebar navbar navbar-light  navbar-expand-md col-md-3 col-xl-3 min-vh-100">
-    <!-- ハンバーガーメニュー -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="nav flex-column">
-       <li class="nav-item">
-          <%= link_to "プロフィール",users_show_path, class: "nav-i nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "投稿一覧",show_post_users_path, class: "nav-i nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "いいねした投稿",like_users_path, class: "nav-i nav-link" %>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<nav class="sidebar navbar navbar-light  navbar-expand-md col-md-4 col-xl-3 min-vh-100">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <%= link_to "プロフィール",users_show_path, class: "nav-i nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "投稿一覧",show_post_users_path, class: "nav-i nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "いいねした投稿",like_users_path, class: "nav-i nav-link" %>
+      </li>
+    </ul>
+  </div>
+</nav>

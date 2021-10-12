@@ -2,6 +2,9 @@
 <p class="mb-1">評価 : <%= post.rate %></p>
 <p id="star-rate<%= post.id %>"></p>    
 <p class="card_text mt-3"><%= safe_join(post.body.split("\n"),tag(:br)) %></p>
+<div id="likes_buttons_<%= post.id %>">
+  <%= render partial: 'likes/like', locals: {post: post} %>
+</div>
 <script>
   $('#star-rate<%= post.id %>').raty({
     starOff   : '<%= asset_path('star-off.png') %>',
