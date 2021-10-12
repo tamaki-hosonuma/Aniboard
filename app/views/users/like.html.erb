@@ -3,7 +3,9 @@
   <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
     <h4>いいねした投稿一覧</h4>
     <% @user.like_posts.each do |post| %> 
-      <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
+      <%= link_to anime_path(id: post.anime_id) do %>
+        <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
+      <% end %>
       <%= render partial: 'shared/post_show', locals: {post: post} %> 
       <p>
     <% end %>
