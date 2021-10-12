@@ -4,7 +4,9 @@
     <h4>投稿一覧</h4>
     <% if @show_posts.present? %>
       <% @show_posts.each do |post| %>
-        <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
+        <%= link_to anime_path(id: post.anime_id) do %>
+          <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
+        <% end %>
         <%= render partial: 'shared/post_show', locals: {post: post} %> 
         <p>
           <i class="far fa-edit"></i><%= link_to '更新', edit_anime_post_path(post.anime_id, post.id) %>
