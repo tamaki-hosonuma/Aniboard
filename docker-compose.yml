@@ -29,7 +29,8 @@ services:
     tty: true
     environment:
       - 'POSTGRES_PASSWORD=postgres' 
+      
   chrome:
-    image: selenium/standalone-chrome:3.141.59-dubnium
+    image: selenium/standalone-chrome:latest
     ports:
       - "4444:4444"
