@@ -1,7 +1,5 @@
 <div class="user-page container container-fluid d-flex">
-  <%# fixで場所固定の必要あり %>
   <%= render partial: 'shared/users_side_bar' %>
-  
   <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
     <h2 class="pb-3"><%= "#{@user.name}" %></h2>
     <% if flash[:success] %>
