@@ -1,5 +1,6 @@
 version: 2.1
 orbs:
+  browser-tools: circleci/browser-tools@1.2.3
   build-tools: circleci/build-tools@2.6.3
   jq: circleci/jq@1.9.1
   ruby: circleci/ruby@1.1.4
@@ -9,22 +10,28 @@ commands:
   setup:
     steps:
       - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
+      - build-tools/install-ci-tools
+      - jq/install
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          name: Check install
+          command: |
+            google-chrome --version
+            chromedriver --version
 
 jobs:
   rspec:
     working_directory: ~/aniboard
-    # here we set TWO docker images.
     docker:
-      - image: circleci/ruby:2.6.6-node # this is our primary docker image, where step commands run.
+      - image: cimg/ruby:2.6.6-browsers
+      
       - image: circleci/postgres:9.5-alpine 
-        environment: # add POSTGRES environment variables.
+        environment:
           POSTGRES_USER: app_user
           POSTGRES_DB: Aniboard_portfolio_test
           POSTGRES_PASSWORD: "postgres"
-    # environment variables specific to Ruby/Rails, applied to the primary container.
+
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
@@ -32,9 +39,14 @@ jobs:
       PGUSER: app_user
       PGPASSWORD: "postgres"
       RAILS_ENV: test
-    # A series of steps to run, some are similar to those in "build".
+
     steps:
       - setup
+      - run:
+          name: bundle install
+          command: |
+            gem install bundler -v 2.2.3
+            bundle check || bundle install --jobs=8
       - run:
           name: rails db:migrate
           command: bundle exec rails db:migrate
@@ -44,52 +56,11 @@ jobs:
       - run:
           name: Rspec
           command: bundle exec rspec
-      # - run:
-      #     name: Wait for DB
-      #     command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      # - run:
-      #     name: Database setup
-      #     command: bundle exec rails db:schema:load --trace
-      # - ruby/rspec-test
-
-    # docker:
-    #   - image: circleci/ruby
-    # steps:
-    #   - checkout
-    #   - setup_remote_docker
-    #   - run:
-    #       name: rails db:migrate
-    #       command: bundle exec rails db:migrate
-    #   - run:
-    #       name: Database setup
-    #       command: bundle exec rails db:schema:load --trace
-    #   - run:
-    #       name: Rspec
-    #       command: bundle exec rspec
-      # - run:
-      #     name: Setup environment variable
-      #     command: |
-      #       echo "export COMPOSE_FILE=docker-compose.yml" >> $BASH_ENV
-      # - run:
-      #     name: Start containers and verify it is working
-      #     command: |
-      #       set -x
-      #       docker-compose up -d
-      #       docker exec aniboard_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:3000
-      # - run:
-      #     name: Setup database
-      #     command: |
-      #       docker-compose exec web bash -c 'yes n | bundle exec rails db:create
-      #       bundle exec rails db:schema;load --trace'
-      # - run:
-      #     name: Run rspec
-      #     command: docker-compose exec aniboard rspec
-
 
   rubocop:
     working_directory: ~/aniboard
     docker:
-      - image: circleci/ruby:2.6.6
+      - image: cimg/ruby:2.6.6-browsers
     steps:
       - checkout
       - restore_cache:
@@ -97,11 +68,10 @@ jobs:
             - gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - gemfiles-{{ .Branch }}-
             - gemfiles-master-
-      # - run: bundle config --local path vendor/bundle
       - run:
           name: bundle install
           command: |
-            gem install bundler -v 2.2.27
+            gem install bundler -v 2.2.3
             bundle check || bundle install --jobs=8
       - run:
           name: Run rubocop
