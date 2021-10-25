@@ -1,0 +1,10 @@
+<div class="post_bottom d-flex">
+  <div class="me-3">
+    <%= link_to anime_post_path(anime_id: post.anime.id, id: post.id) do %>
+      <p><%= post.comments.count %>コメント</p>
+    <% end %>
+  </div>
+  <div class="me-3">
+    <%= link_to "コメントする", anime_post_path(anime_id: post.anime.id, id: post.id) %>
+  </div>
+</div>
