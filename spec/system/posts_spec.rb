@@ -13,7 +13,7 @@ RSpec.describe 'Posts', type: :system, js: true do
         create(:post, user_id: @user.id, anime_id: @anime.id)
       end
 
-      it "display post " do
+      it "display post" do
         visit root_path
         fill_in "q_title_cont", with: "日常"
         find(".fa-search").click

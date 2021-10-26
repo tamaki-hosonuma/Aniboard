@@ -13,7 +13,7 @@ RSpec.describe Post, type: :model do
       expect(post.errors[:title]).to include("を入力してください")
     end
 
-    it "creates post if body is 1500 characters or less" do
+    it "create post if body is 1500 characters or less" do
       post = build(:post, body: "a" * 1500)
       expect(post).to be_valid
     end
