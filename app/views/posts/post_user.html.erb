@@ -1,8 +1,5 @@
 <div class="user-page container container-fluid d-flex">
   <nav class="sidebar navbar navbar-light  navbar-expand-md col-md-3 col-xl-3">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav flex-column">
         <li class="nav-item"></li>
@@ -23,6 +20,11 @@
       <p>
         <%= safe_join("#{@post_user.profile}".split("\n"),tag(:br))%>
       </p>
+      <div class="text-start">
+        <%= link_to(root_path, class:"btn") do %>
+        <p class="text-start"><i class="fas fa-reply"></i>ホームへ</p>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
