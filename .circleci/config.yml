@@ -6,6 +6,24 @@ orbs:
   ruby: circleci/ruby@1.1.4
   node: circleci/node@4.7.0
 
+executors:
+  default:
+    working_directory: ~/aniboard
+    docker:
+      - image: cimg/ruby:2.6.6-browsers
+      - image: circleci/postgres:9.5-alpine
+       environment:
+          POSTGRES_USER: app_user
+          POSTGRES_DB: Aniboard_portfolio_test
+          POSTGRES_PASSWORD: "postgres"
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: app_user
+      PGPASSWORD: "postgres"
+      RAILS_ENV: test
+
 commands:
   setup:
     steps:
@@ -22,64 +40,20 @@ commands:
 
 jobs:
   rspec:
-    working_directory: ~/aniboard
-    docker:
-      - image: cimg/ruby:2.6.6-browsers
-      
-      - image: circleci/postgres:9.5-alpine 
-        environment:
-          POSTGRES_USER: app_user
-          POSTGRES_DB: Aniboard_portfolio_test
-          POSTGRES_PASSWORD: "postgres"
-
-    environment:
-      BUNDLE_JOBS: "3"
-      BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      PGUSER: app_user
-      PGPASSWORD: "postgres"
-      RAILS_ENV: test
-
+    executor: default
     steps:
       - setup
-      - run:
-          name: bundle install
-          command: |
-            gem install bundler -v 2.2.3
-            bundle check || bundle install --jobs=8
-      - run:
-          name: rails db:migrate
-          command: bundle exec rails db:migrate
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      - run:
-          name: Rspec
-          command: bundle exec rspec
+      - ruby/install-deps
+      - run: bin/rails db:schema:load --trace
+      - run: bin/webpack
+      - ruby/rspec-test
 
   rubocop:
-    working_directory: ~/aniboard
-    docker:
-      - image: cimg/ruby:2.6.6-browsers
+    executor: default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gemfiles-{{ .Branch }}-
-            - gemfiles-master-
-      - run:
-          name: bundle install
-          command: |
-            gem install bundler -v 2.2.3
-            bundle check || bundle install --jobs=8
-      - run:
-          name: Run rubocop
-          command: bundle exec rubocop --parallel
-      - save_cache:
-          key: gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+      - ruby/install-deps
+      - ruby/rubocop-check
 
   heroku_deploy:
     working_directory: ~/aniboard
