@@ -49,6 +49,12 @@ jobs:
       - ruby/install-deps
       - run: bundle exec rails db:schema:load --trace
       - ruby/rspec-test
+      - store_test_results:
+          path: /tmp/test-results
+          destination: test-results
+      - store_artifacts:
+          path: tmp/screenshots
+          destination: test-screenshots
 
   rubocop:
     executor: default
