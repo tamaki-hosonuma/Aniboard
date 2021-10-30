@@ -32,9 +32,8 @@ commands:
       - jq/install
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      # - install-node-example
-      - node/install:
-          install-yarn: true
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
           name: Check install
           command: |
