@@ -45,7 +45,6 @@ jobs:
       - setup
       - ruby/install-deps
       - run: bin/rails db:schema:load --trace
-      - run: bin/webpack
       - ruby/rspec-test
 
   rubocop:
