@@ -35,6 +35,7 @@ gem 'ransack'
 gem 'rakuten_web_service'
 gem 'pg', '~> 1.2.3'
 gem 'bundler', '~>2.2.3'
+gem 'rspec_junit_formatter'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
