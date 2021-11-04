@@ -51,7 +51,7 @@ jobs:
       - ruby/install-deps
       - run: bundle exec rails db:schema:load --trace
       - ruby/rspec-test
-      - run: apt-get install -y fonts-noto-cjk
+      - run: sudo apt-get install -y fonts-noto-cjk
       - store_artifacts:
           path: tmp/screenshots
           destination: test-screenshots
