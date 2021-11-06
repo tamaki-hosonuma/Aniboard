@@ -35,7 +35,7 @@ commands:
       - browser-tools/install-chromedriver
       - node/install-packages:
           pkg-manager: npm
-      - run: yarn add bootstrap@next
+      - run: npm install bootstrap@next
       - run: sudo apt-get update
       - run: sudo apt-get -y install imagemagick
       - run:
