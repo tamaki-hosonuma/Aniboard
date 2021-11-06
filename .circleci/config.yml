@@ -35,7 +35,7 @@ commands:
       - browser-tools/install-chromedriver
       - node/install-packages:
           pkg-manager: yarn
-      - run: yarn remove jquery popper.js
+      - run: yarn remove jquery @popperjs/core
       - run: yarn add jquery @popperjs/core
       - run: sudo apt-get update
       - run: sudo apt-get -y install imagemagick
