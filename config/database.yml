@@ -87,4 +87,6 @@ production:
   <<: *default
   database: Aniboard_portfolio_production
   username: Aniboard_portfolio
+  production:
+    url: <%= ENV['DATABASE_URL'] %>
   password: <%= ENV['ANIBOARD_PORTFOLIO_DATABASE_PASSWORD'] %>
