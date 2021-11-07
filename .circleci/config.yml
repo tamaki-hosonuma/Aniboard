@@ -35,7 +35,6 @@ commands:
       - browser-tools/install-chromedriver
       - node/install-packages:
           pkg-manager: npm
-      - run: sudo npm install bootstrap
       - run: sudo apt-get update
       - run: sudo apt-get -y install imagemagick
       - run:
@@ -68,6 +67,7 @@ jobs:
     executor: default
     steps:
       - checkout
+      - run: sudo npm install bootstrap
       - heroku/install
       - heroku/deploy-via-git
 
