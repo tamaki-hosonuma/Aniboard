@@ -67,7 +67,8 @@ jobs:
     executor: default
     steps:
       - checkout
-      - run: sudo npm install bootstrap
+      - run: sudo npm install --save bootstrap
+      - run: sudo npm install --save @popperjs/core
       - heroku/install
       - heroku/deploy-via-git
 
