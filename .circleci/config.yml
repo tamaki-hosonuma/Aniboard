@@ -66,14 +66,15 @@ jobs:
 
   build_and_release:
     executor: default
-    steps:
-      # - checkout
-      - run: sudo npm install --save bootstrap
-      - run: sudo npm install --save @popperjs/core
-      - heroku-container/push-and-release:
-          app-name: aniboard-portfolio
-      # - heroku/install
-      # - heroku/deploy-via-git
+    jobs:
+      steps:
+        # - checkout
+        - run: sudo npm install --save bootstrap
+        - run: sudo npm install --save @popperjs/core
+        - heroku-container/push-and-release:
+            app-name: aniboard-portfolio
+        # - heroku/install
+        # - heroku/deploy-via-git
 
 workflows:
   build:
