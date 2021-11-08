@@ -80,7 +80,7 @@ workflows:
     jobs:
       - rspec
       - rubocop
-      - heroku_deploy:
+      - build_and_release:
           requires:
             - rspec
             - rubocop
