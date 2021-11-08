@@ -5,7 +5,7 @@ orbs:
   jq: circleci/jq@1.9.1
   ruby: circleci/ruby@1.1.4
   node: circleci/node@4.7.0
-  ## heroku: circleci/heroku@1.2.6
+  # heroku: circleci/heroku@1.2.6
   heroku-container: pbrisbin/heroku-container@1.0.0
 
 executors:
@@ -64,7 +64,7 @@ jobs:
       - ruby/install-deps
       - ruby/rubocop-check
 
-  heroku_deploy:
+  build_and_release:
     executor: default
     steps:
       # - checkout
