@@ -5,8 +5,7 @@ orbs:
   jq: circleci/jq@1.9.1
   ruby: circleci/ruby@1.1.4
   node: circleci/node@4.7.0
-  # heroku: circleci/heroku@1.2.6
-  heroku-container: pbrisbin/heroku-container@1.0.0
+  heroku: circleci/heroku@1.2.6
 
 executors:
   default:
@@ -64,24 +63,21 @@ jobs:
       - ruby/install-deps
       - ruby/rubocop-check
 
-  build_and_release:
+  heroku_deploy:
     executor: default
-    jobs:
-      steps:
-        # - checkout
-        - run: sudo npm install --save bootstrap
-        - run: sudo npm install --save @popperjs/core
-        - heroku-container/push-and-release:
-            app-name: aniboard-portfolio
-        # - heroku/install
-        # - heroku/deploy-via-git
+    steps:
+      - checkout
+      - run: sudo npm install --save bootstrap
+      - run: sudo npm install --save @popperjs/core
+      - heroku/install
+      - heroku/deploy-via-git
 
 workflows:
   build:
     jobs:
       - rspec
       - rubocop
-      - build_and_release:
+      - heroku_deploy:
           requires:
             - rspec
             - rubocop
