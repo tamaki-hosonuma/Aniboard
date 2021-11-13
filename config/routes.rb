@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     collection do
       get 'show_post' => 'users#show_post'
       get 'like' => 'users#like'
+      get 'comment' => 'users#comment'
     end
   end
 
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
     end
     resources :posts do
       get 'post_user' => 'posts#post_user'
+      resources :comments, only: [:create, :destroy]
     end
   end
 

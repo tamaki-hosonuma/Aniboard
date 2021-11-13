@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @likes = Like.where(user_id: @user.id)
     @post_user = User.find_by(params[:name])
+    @comments = Comment.where(user_id: @user.id)
   end
 
   def show_post
@@ -11,7 +12,10 @@ class UsersController < ApplicationController
     @post_user = User.find_by(params[:name])
   end
 
-  def likes
+  def like
+  end
+
+  def comment
   end
 
   private

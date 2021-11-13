@@ -19,7 +19,7 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user_email', with: "#{user.email}"
       fill_in 'user_password', with: "#{user.password}"
       click_button 'ログイン'
-      click_on "test"
+      click_on "マイページ"
       click_on "プロフィール変更"
       click_on "アカウントを削除する"
       expect(page).to have_content "ログインもしくはアカウント登録をしてください"
@@ -30,7 +30,7 @@ RSpec.describe 'Users', type: :system do
     before do
       @post = create(:post)
       login(@post.user)
-      click_on "#{@post.user.name}"
+      click_on "マイページ"
     end
 
     it "have user profile" do

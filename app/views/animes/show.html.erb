@@ -10,9 +10,7 @@
           <% @anime.posts.each do |post| %>
             <h5 class="text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.title %></h5>
             <%= render partial: 'shared/post_show', locals: {post: post} %>
-            <div id="likes_buttons_<%= post.id %>" class="text-start">
-              <%= render partial: 'likes/like', locals: {post: post} %>
-            </div>
+            <%= render partial: 'shared/link_comments', locals: {post: post} %>
           <% end %>
       <% else %>
           <p class="pt-2 pb-2">まだ投稿がありません  ぜひ投稿してね</p>

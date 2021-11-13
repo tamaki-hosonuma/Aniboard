@@ -13,7 +13,7 @@ RSpec.describe "Posts", type: :request do
   end
 
   context "with valid attributes" do
-    it "adds a post" do
+    it "add a post" do
       post_params = { title: "Test", body: "Test is interesting", rate: "3", anime_id: @anime.id, anime_title: @anime.title, user_id: @user.id }
       expect { post anime_posts_path(anime_id: @anime.id), params: { post: post_params, user_id: @user.id } }.to change(@user.posts, :count).by(1)
     end

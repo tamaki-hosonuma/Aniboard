@@ -5,14 +5,21 @@ ja:
         anime:
           attributes:
             short_title:
-              blank: "が空になっています"
+              blank: "を入力してください"
             title_yomi:
-              blank: "が空になっています"
+              blank: "を入力してください"
       models:
         user:
           attributes:
             password_confirmation:
               not_saved: "保存できませんでした: %{errors}"
+      models:
+        comment:
+          attributes:
+            user_id:
+              blank: "を入力してください"     
+            post_id:
+              blank: "を入力してください"      
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
     attributes:
