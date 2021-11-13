@@ -1,13 +1,10 @@
 <h1>感想一覧</h1>
-
 <% @posts.each do |post| %>
-
   <div>
     <p>タイトル:<%= post.title %></p>
     <p>感想 :<%= post.body %></p>
     <p>評価 :<%= post.rate %></p>
-    <div id="star-rate<%= post.id%>"></div>    
-
+    <div id="star-rate<%= post.id%>"></div>
     <script>
       $('#star-rate<%= post.id%>').raty({
         starOff   : '<%= asset_path('star-off.png') %>',

@@ -17,3 +17,5 @@ AllCops:
     - '**/Gemfile'
     - 'vendor/**/*'
     - '.git/**/*'
+    - 'spec/rails_helper.rb'
+  NewCops: enable

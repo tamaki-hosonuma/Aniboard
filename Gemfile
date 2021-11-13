@@ -33,6 +33,9 @@ gem 'syobocal'
 gem 'pry-rails'
 gem 'ransack'
 gem 'rakuten_web_service'
+gem 'pg', '~> 1.2.3'
+gem 'bundler', '~>2.2.3'
+gem 'rspec_junit_formatter'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,7 +43,6 @@ group :development, :test do
   gem 'rubocop-airbnb'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'pg', '~> 1.2.3'
 end
 
 group :development do
@@ -58,11 +60,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-end
-
-group :production do
-  #gem 'pg'
-  gem 'pg', '~> 1.2.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

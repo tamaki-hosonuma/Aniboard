@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :user
-  # before_action :set_anime, only: [:new, :create]
 
   def index
     @posts = Post.includes(:anime, :user)
@@ -16,8 +15,6 @@ class PostsController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     @user = current_user
     @post = Post.new
-    # @animes = Anime.find_by(params[:post][:anime_id])
-    # @anime = Anime.find(id: params[:anime_id])
   end
 
   def create

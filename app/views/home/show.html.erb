@@ -19,14 +19,12 @@
       <h4 class="text-center pt-4 pb-4">最近の投稿</h4>
       <div class="row anime-post">
         <% @recent_posts.each do |post| %>
-          <div class="col-12 col-md-12 col-xl-6 anime-card mt-3 mb-2">
+          <div class="col-12 col-md-6 col-xl-6 anime-card mt-3 mb-2">
             <div class="card home-anime-card">
               <%= link_to anime_path(id: post.anime_id) do %>
                 <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
+                <h6 class="card-subtitle mb-2">「<%= post.title %>」</h6>
                 <%= render partial: 'shared/post_show', locals: {post: post} %>
-                <div id="likes_buttons_<%= post.id %>">
-                  <%= render partial: 'likes/like', locals: {post: post} %>
-                </div>
               <% end %>
             </div>
           </div>
