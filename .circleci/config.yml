@@ -65,9 +65,6 @@ jobs:
 
   heroku_deploy:
     executor: default
-    filters:
-      branches:
-        only: master
     steps:
       - checkout
       - run: sudo npm install --save bootstrap
@@ -84,4 +81,7 @@ workflows:
           requires:
             - rspec
             - rubocop
+          filters:
+            branches:
+              only: master
 
