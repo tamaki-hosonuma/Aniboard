@@ -65,6 +65,9 @@ jobs:
 
   heroku_deploy:
     executor: default
+    filters:
+      branches:
+        only: master
     steps:
       - checkout
       - run: sudo npm install --save bootstrap
