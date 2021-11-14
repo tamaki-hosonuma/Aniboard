@@ -3,6 +3,7 @@
   <div class="form-box col-12 col-md-12 col-xl-6">
     <div class="form-box-inner mt-3">
       <%= form_with(model: [@anime, @post], local: true) do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
         <p>
         <%= f.text_field :anime_title, value: "#{@anime.title}", :readonly => true %>
         </p>
