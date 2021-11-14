@@ -9,6 +9,15 @@ ja:
             title_yomi:
               blank: "を入力してください"
       models:
+        post:
+          attributes:
+            body:
+              blank: "を入力してください"
+              too_short: "を1文字以上入力してください"
+            rate:
+              not_a_number: "を星の数で表してください"
+              blank: "を入力してください"
+      models:
         user:
           attributes:
             password_confirmation:
@@ -19,7 +28,9 @@ ja:
             user_id:
               blank: "を入力してください"     
             post_id:
-              blank: "を入力してください"      
+              blank: "を入力してください"
+            body:
+              blank: "を入力してください"
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
     attributes:
