@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "投稿が完了しました"
     else
       redirect_to anime_post_path(id: @post.id)
-      flash[:notice] = "投稿に失敗しました"
+      flash[:alert] = "コメントを入力してください"
     end
   end
 

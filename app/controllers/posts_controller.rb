@@ -27,7 +27,6 @@ class PostsController < ApplicationController
       flash[:notice] = "投稿が完了しました"
     else
       render :new
-      flash[:notice] = "投稿に失敗しました"
     end
   end
 
