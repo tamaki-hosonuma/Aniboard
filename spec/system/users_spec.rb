@@ -84,7 +84,7 @@ RSpec.describe 'Users', type: :system do
         expect(@post.user.valid_password?("abcdefg")).to eq(true)
       end
 
-      it "don't change profile without current_password" do
+      it "can't change profile without current_password" do
         fill_in "user_name", with: "change_name"
         fill_in "user_email", with: "test@test.com"
         fill_in "user_profile", with: "I watch a lot of anime"

@@ -25,4 +25,16 @@ RSpec.describe "Posts", type: :request do
       expect { post anime_posts_path(anime_id: @anime.id), params: { post: post_params } }.not_to change(@user.posts, :count)
     end
   end
+
+  context "delete posts" do
+    it "#delete successfully" do
+      @post = create(:post, { title: "Test", body: "Test is interesting", rate: "3", anime_id: @anime.id, anime_title: @anime.title, user_id: @user.id })
+      expect { @post.destroy }.to change { Post.count }.by(-1)
+    end
+
+    it "delete successfully when user account deleted" do
+      @user.posts.create(title: "Test", body: "Test is interesting", rate: "3", anime_id: @anime.id, anime_title: @anime.title, user_id: @user.id)
+      expect { @user.destroy }.to change { Post.count }.by(-1)
+    end
+  end
 end

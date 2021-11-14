@@ -21,4 +21,18 @@ RSpec.describe "Comments", type: :request do
       expect { post anime_post_comments_path(anime_id: @post.anime_id, post_id: @post.id), params: { comment: c_params } }.not_to change(@user.comments, :count)
     end
   end
+
+  context "delete comments" do
+    it "#delete successfully" do
+      expect { @comment.destroy }.to change { Comment.count }.by(-1)
+    end
+
+    it "delete successfully when user post deleted" do
+      expect { @post.destroy }.to change { Comment.count }.by(-1)
+    end
+
+    it "delete successfully when user account deleted" do
+      expect { @user.destroy }.to change { Comment.count }.by(-1)
+    end
+  end
 end
