@@ -55,6 +55,18 @@ class PostsController < ApplicationController
     end
   end
 
+  def post_user_post
+    @post_user = User.find(params[:id])
+  end
+
+  def post_user_like
+    @post_user = User.find(params[:id])
+  end
+
+  def post_user_comment
+    @post_user = User.find(params[:id])
+  end
+
   def post_user
     @post_user = User.find(params[:id])
   end

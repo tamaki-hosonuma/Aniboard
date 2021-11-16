@@ -41,6 +41,23 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_selector("img[src$='assets/default.jpg']")
     end
 
+    it "display users posts" do
+      click_on "投稿"
+      expect(page).to have_selector(".card-title")
+    end
+
+    it "display users like_posts" do
+      @like = create(:like, post_id: @post.id, user_id: @post.user_id)
+      click_on "いいねした投稿"
+      expect(page).to have_selector(".card-title")
+    end
+
+    it "display users comments" do
+      @comment = create(:comment, post_id: @post.id, user_id: @post.user_id)
+      click_on "コメント"
+      expect(page).to have_selector(".comment_box")
+    end
+
     describe "change account information" do
       before do
         click_on "プロフィール変更"

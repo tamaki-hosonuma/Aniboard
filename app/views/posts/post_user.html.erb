@@ -1,11 +1,5 @@
 <div class="user-page container container-fluid d-flex">
-  <nav class="sidebar navbar navbar-light  navbar-expand-md col-md-3 col-xl-3">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="nav flex-column">
-        <li class="nav-item"></li>
-      </ul>
-    </div>
-  </nav>
+  <%= render partial: 'shared/post_user_side_bar' %>
   <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
     <h2 class="pb-3"><%= "#{@post_user.name}" %></h2>
     <div class="profile_box text-center">
@@ -20,11 +14,6 @@
       <p>
         <%= safe_join("#{@post_user.profile}".split("\n"),tag(:br))%>
       </p>
-      <div class="text-start">
-        <%= link_to(root_path, class:"btn") do %>
-        <p class="text-start"><i class="fas fa-reply"></i>ホームへ</p>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>

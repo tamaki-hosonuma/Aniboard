@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   describe "Create comment successfully" do
-    it "create comment if body, user_id and post_id exist" do
+    it "create comments if body, user_id and post_id exist" do
       comment = create(:comment)
       expect(comment).to be_valid
     end
@@ -19,7 +19,7 @@ RSpec.describe Comment, type: :model do
       expect(comment.errors[:post_id]).to include("を入力してください")
     end
 
-    it "create comment if body is 400 characters or less" do
+    it "create comments if body is 400 characters or less" do
       comment = create(:comment, body: "a" * 400)
       expect(comment).to be_valid
     end

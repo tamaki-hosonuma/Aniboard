@@ -1,9 +1,10 @@
 <div class="user-page container container-fluid d-flex">
-  <%= render partial: 'shared/users_side_bar' %>
+  <%= render partial: 'shared/post_user_side_bar' %>
   <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
+    <h4 class="post_user_name"><%= "#{@post_user.name}" %>さん</h4>
     <h4>コメント一覧</h4>
-    <% if @user.comments.present? %>
-      <% @user.comments.each do |comment| %>
+    <% if @post_user.comments.present? %>
+      <% @post_user.comments.each do |comment| %>
         <div class="comment_box bg-white mt-2 border border-warning shadow-sm">
           <div class=" d-flex">
             <p class="comment_right mt-1 mb-1 ms-2 me-2">

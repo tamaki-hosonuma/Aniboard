@@ -1,0 +1,22 @@
+<div class="user-page container container-fluid d-flex">
+  <%= render partial: 'shared/post_user_side_bar' %>
+  <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
+    <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
+    <h4 class="post_user_name"><%= "#{@post_user.name}" %>さん</h4>
+    <h4>投稿一覧</h4>
+    <% if @post_user.posts.present? %>
+      <% @post_user.posts.each do |post| %>
+        <%= link_to anime_path(id: post.anime_id) do %>
+          <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
+        <% end %>
+        <%= render partial: 'shared/post_show', locals: {post: post} %> 
+        <p>
+          <i class="far fa-edit"></i><%= link_to '更新', edit_anime_post_path(post.anime_id, post.id) %>
+          <i class="far fa-trash-alt"></i><%= link_to '削除', anime_post_path(post.anime_id, post.id), method: :delete %>
+        </p>
+      <% end %>
+    <% else %>
+      <p class="mt-5 text-center">投稿はありません</p>
+    <% end %>
+  </div>
+</div>

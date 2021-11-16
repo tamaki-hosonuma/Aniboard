@@ -14,7 +14,7 @@ RSpec.describe 'Comments', type: :system do
     click_on "更新する"
   end
 
-  it "Post comment successfully" do
+  it "Post comments" do
     visit anime_post_path(anime_id: @post.anime_id, id: @post.id)
     fill_in "comment_body", with: "a" * 100
     click_on "送信"
@@ -22,7 +22,7 @@ RSpec.describe 'Comments', type: :system do
     expect(page).to have_content "a" * 100
   end
 
-  describe "display comment successfully" do
+  describe "display comments" do
     it "display comment in user_page" do
       visit root_path
       click_on "マイページ"

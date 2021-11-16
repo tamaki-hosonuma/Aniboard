@@ -1,4 +1,4 @@
-<div class="anime-main">
+<div class="anime-main min-vh-100">
   <div class="anime-box">
     <h4 class="anime-title"><%= @anime.title %></h4>
     <%= link_to "感想を投稿する", new_anime_post_path(anime_id: "#{@anime.id}"), class:"btn mt-4 mb-4" %>

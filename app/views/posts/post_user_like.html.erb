@@ -1,9 +1,10 @@
 <div class="user-page container container-fluid d-flex">
-  <%= render partial: 'shared/users_side_bar' %>
+  <%= render partial: 'shared/post_user_side_bar' %>
   <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
+    <h4 class="post_user_name"><%= "#{@post_user.name}" %>さん</h4>
     <h4>いいねした投稿一覧</h4>
-    <% if @user.like_posts.present? %>
-      <% @user.like_posts.each do |post| %> 
+    <% if @post_user.like_posts.present? %>
+      <% @post_user.like_posts.each do |post| %> 
         <%= link_to anime_path(id: post.anime_id) do %>
           <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
         <% end %>

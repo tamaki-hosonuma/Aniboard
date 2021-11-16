@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  describe "create Like" do
+  describe "create Likes" do
     before do
       @like = build(:like)
     end
 
-    it "create successfully" do
+    it "create" do
       expect(create(:like)).to be_valid
     end
 

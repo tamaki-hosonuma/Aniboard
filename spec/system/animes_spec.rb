@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Animes', type: :system do
-  describe "Anime list" do
+  describe "Anime lists" do
     before do
       user = create(:user)
       login(user)
@@ -15,7 +15,7 @@ RSpec.describe 'Animes', type: :system do
       expect(page).to have_content "日常"
     end
 
-    it "have anime page" do
+    it "have anime pages" do
       visit root_path
       fill_in "q_title_cont", with: "日常"
       find(".fa-search").click
