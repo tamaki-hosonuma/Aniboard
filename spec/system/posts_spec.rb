@@ -37,8 +37,8 @@ RSpec.describe 'Posts', type: :system, js: true do
     before do
       user = create(:user, name: "Joe", email: "tester@example.com", password: "111111")
       post = create(:post, user_id: user.id, anime_id: @anime.id)
-      like = create(:like, post_id: post.id, user_id: post.user_id)
-      comment = create(:comment, post_id: post.id, user_id: post.user_id)
+      create(:like, post_id: post.id, user_id: post.user_id)
+      create(:comment, post_id: post.id, user_id: post.user_id)
       visit root_path
     end
 
