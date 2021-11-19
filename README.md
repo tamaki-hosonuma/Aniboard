@@ -23,7 +23,14 @@ VSCode (Visual Studio Code)
 楽天ブックスDVD/Blu-ray検索API  
 RSpec  
 Rubocop-airbnb  
-
+Heroku  
+![アプリケーション設計図](https://user-images.githubusercontent.com/75761741/142596685-596a6405-7711-4000-ab49-fd9ff51bb772.jpg)
+<br>
+<br>
+## 使用方法(アプリケーションURL)  
+https://aniboard-portfolio.herokuapp.com/  
+<br>
+<br>
 ## 各機能紹介
 ### __1.アニメタイトル検索__  
 検索フォームにキーワードを入力し🔍をクリックすると、  
@@ -58,26 +65,3 @@ Rubocop-airbnb
 ![DVD検索](https://user-images.githubusercontent.com/75761741/138664414-1c707ff9-dce2-413a-aa0f-fa683bef10be.png)  
 <br>
 <br>
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
