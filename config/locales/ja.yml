@@ -59,6 +59,10 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      post:
+        title: タイトル
+        body: 本文
+        rate: 評価
     models:
       user: ユーザー
   devise:
