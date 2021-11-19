@@ -1,0 +1,35 @@
+<nav class="sidebar navbar navbar-light  navbar-expand-md col-md-3 col-xl-3 min-vh-100">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <% if @post_user.id == @user.id %>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <%= link_to "プロフィール",users_show_path, class: "nav-i nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "投稿",show_post_users_path, class: "nav-i nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "いいねした投稿",like_users_path, class: "nav-i nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "コメント", comment_users_path, class: "nav-i nav-link" %>
+        </li>
+      </ul>
+    <% else %>
+      <ul class="nav flex-column post_user_sidebar">
+        <li class="nav-item">
+        <%= link_to "プロフィール",anime_post_post_user_path(id: @post_user.id), class: "nav-i nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "投稿", anime_post_post_user_post_path(id: @post_user.id), class: "nav-i nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "いいねした投稿", anime_post_post_user_like_path(id: @post_user.id), class: "nav-i nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "コメント", anime_post_post_user_comment_path(id: @post_user.id), class: "nav-i nav-link" %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Home', type: :system do
   describe "show" do
-    it "displayed recent posts" do
+    it "display recent posts" do
       user = create(:user)
       login(user)
       anime = create(:anime)

@@ -8,7 +8,7 @@ RSpec.describe "Likes", type: :request do
     sign_in @user
   end
 
-  describe "create like" do
+  describe "create likes" do
     it "Count is increased by 1 when press like button" do
       expect { post create_like_path(user_id: @user.id, post_id: @post.id, id: @post.id), xhr: true }.to change(Like, :count).from(1).to(2)
     end

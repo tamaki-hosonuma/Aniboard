@@ -3,13 +3,18 @@
   <div class="row dvd-main justify-content-center">
     <h5 class="result-count"><%= @dvds.count %>件</h5>
     <% @dvds.each do |dvd| %>
-      <div class="dvd-box card col-5 col-md-5 col-xl-3 m-2">
+      <div class="dvd-box card col-5 col-md-5 col-xl-3 m-2 border border-warning shadow-sm">
         <%= link_to dvd.item_url, class:"card-body" do %>
           <p><%= image_tag(dvd.medium_image_url, class: "img-fluid") %></p>
           <p class="card-title"><%= dvd.title %></p>
           <p><%= dvd.label %></p>
         <% end %>
       </div>
+    <% end %>
+  </div>
+  <div class="text-start">
+    <%= link_to(anime_path(id: @anime.id)) do %>
+    <p class="text-start"> <i class="fas fa-reply ms-2 mt-5"></i>アニメページに戻る</p>
     <% end %>
   </div>
 </div>

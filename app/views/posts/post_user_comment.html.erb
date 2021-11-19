@@ -1,0 +1,40 @@
+<div class="user-page container container-fluid d-flex">
+  <%= render partial: 'shared/post_user_side_bar' %>
+  <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
+    <h4 class="post_user_name"><%= "#{@post_user.name}" %>さん</h4>
+    <h4>コメント一覧</h4>
+    <% if @post_user.comments.present? %>
+      <% @post_user.comments.each do |comment| %>
+        <div class="comment_box bg-white mt-2 border border-warning shadow-sm">
+          <div class=" d-flex">
+            <p class="comment_right mt-1 mb-1 ms-2 me-2">
+            <%= link_to ">「#{comment.post.title}」", anime_post_path(anime_id: comment.post.anime_id, id: comment.post.id) %>
+            <%= link_to " #{comment.post.anime_title}", anime_path(id: comment.post.anime_id) %>
+          </div>
+          <div class="d-flex">
+            <p class="comment_right mt-1 mb-1 ms-2 me-2">
+              <%= link_to anime_post_post_user_path(anime_id: comment.post.anime.id, id: comment.user_id, post_id: comment.post.id) do %>
+                <p>
+                  <% if comment.user.image? %>
+                    <%= image_tag comment.user.image.thumb.url, class: "img-fluid" %>
+                  <% else %>
+                    <%= image_tag "/assets/default.jpg", class: "img-fluid" %>
+                  <% end %>
+                </p>
+              <% end %>
+            </p>
+            <p class="comment_left ms-3 mb-0 mt-2 mb-2">
+              <%= safe_join(comment.body.split("\n"),tag(:br)) %></p>
+            </p>
+          </div>
+          <p class="mb-0 text-end">
+            <i class="far fa-trash-alt"></i>
+            <%= link_to '削除', anime_post_comment_path(anime_id: comment.post.anime_id, id: comment.post.id, post_id: comment.post.id, comment_id: comment.id), method: :delete %>
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="mt-5 text-center">コメントはありません</p>
+    <% end %>
+  </div>
+</div>

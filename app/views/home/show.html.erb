@@ -20,11 +20,33 @@
       <div class="row anime-post">
         <% @recent_posts.each do |post| %>
           <div class="col-12 col-md-6 col-xl-6 anime-card mt-3 mb-2">
-            <div class="card home-anime-card">
+            <div class="card home-anime-card shadow-sm">
               <%= link_to anime_path(id: post.anime_id) do %>
                 <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= post.anime_title %></h5>
                 <h6 class="card-subtitle mb-2">「<%= post.title %>」</h6>
-                <%= render partial: 'shared/post_show', locals: {post: post} %>
+                <div class="ps-2">
+                  <p><i class="far fa-user ps-1 pe-2"></i><%= link_to "#{post.user.name}",  anime_post_post_user_path(anime_id: post.anime.id, id: post.user_id, post_id: post.id ) %></p>
+                  <div class="d-flex">
+                    <p class="me-3"><i class="fas fa-star-half-alt ps-1 pe-1"></i> <%= post.rate %></p>
+                    <p id="star-rate<%= post.id %>"></p> 
+                  </div>   
+                  <p class="card_text"><%= truncate(post.body, length: 100) %></p>
+                  <div id="likes_buttons_<%= post.id %>" class="me-3">
+                    <%= render partial: 'likes/like', locals: {post: post} %>
+                  </div>
+                </div>
+                <script>
+                  $('#star-rate<%= post.id %>').raty({
+                    starOff   : '<%= asset_path('star-off.png') %>',
+                    starOn    : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= post.rate %>,
+                    number: 5
+                  });
+                </script>
+                <%= render partial: 'shared/link_comments', locals: {post: post} %>
               <% end %>
             </div>
           </div>

@@ -9,6 +9,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @anime = Anime.find(params[:anime_id])
     @post_user = User.find_by(params[:name])
+    @comment =  Comment.new
+    @comments = @post.comments.includes(:user)
   end
 
   def new
@@ -24,8 +26,7 @@ class PostsController < ApplicationController
       redirect_to anime_path(@anime.id)
       flash[:notice] = "投稿が完了しました"
     else
-      render "new"
-      flash[:notice] = "投稿に失敗しました"
+      render :new
     end
   end
 
@@ -52,6 +53,18 @@ class PostsController < ApplicationController
       flash[:success] = "削除しました"
       redirect_to user_path
     end
+  end
+
+  def post_user_post
+    @post_user = User.find(params[:id])
+  end
+
+  def post_user_like
+    @post_user = User.find(params[:id])
+  end
+
+  def post_user_comment
+    @post_user = User.find(params[:id])
   end
 
   def post_user

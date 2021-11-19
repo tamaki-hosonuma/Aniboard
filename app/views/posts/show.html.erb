@@ -1,9 +1,22 @@
+<h5 class="p-3 text-center">投稿へのコメント</h5>
 <div class="container">
-  <div class="post-box col-12">
+  <div class="post-box col-12 col-md-6 col-xl-6">
     <h5 class="card-title text-center pt-2 pb-2 mb-3 border-top border-bottom border-3 border-warning"><%= @post.anime_title %></h5>
     <h6 class="card-subtitle mb-2">「<%= @post.title %>」</h6>
     <%= render partial: 'shared/post_show', locals: {post: @post} %>
-    <i class="far fa-trash-alt mt-5"></i><%= link_to '削除', anime_post_path(@post), method: :delete %>
-    <i class="fas fa-reply ms-2 mt-5"></i><%= link_to "マイページに戻る", users_show_path(@user.id) %>
+    <p class="mt-3"><%= @post.comments.count %>コメント</p>
+    <%= form_with(model:[@anime, @post, @comment], method: :post, local: true) do |f| %>
+      <p>
+      <%= f.text_area :body, placeholder: "コメントを記入" %>
+      </p>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.hidden_field :anime_id, value: @post.anime_id %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.submit "送信", class: "mt-3 mb-5 btn btn-warning" %>
+    <% end %>
+    <% if @post.comments.present? %>
+      <%= render partial: 'shared/post_comments' %>
+    <% end %>
+    <i class="fas fa-reply ms-2 mt-5"></i><%= link_to "アニメページに戻る", anime_path(id: @post.anime_id) %>
   </div>
 </div>

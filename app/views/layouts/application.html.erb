@@ -11,6 +11,7 @@
     <%= stylesheet_link_tag 'users' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="p-3 bg-img">
@@ -32,8 +33,8 @@
                         <%= image_tag asset_path("default.jpg"), :size => '50x50', class:"nav-link mt-1" %>
                       <% end %>
                     </li>
-                    <li class="nav-item">
-                      <%= link_to @user.name, users_show_path, class: "nav-link mt-3" %>
+                    <li class="nav-item user_name">
+                      <%= link_to "マイページ", users_show_path, class: "nav-link mt-3" %>
                     </li>
                     <li class="nav-item">
                       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link mt-3" %>
@@ -54,8 +55,14 @@
           </nav>
         </div>
       </header>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <div class="alert alert-success pt-1 pb-1" role="alert">
+        <p class="notice mb-0"><%= notice %></p></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-warning pt-0 pb-0" role="alert">
+        <p class="alert mb-0 pt-1 pb-1"><%= alert %></p></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

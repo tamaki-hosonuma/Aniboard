@@ -1,14 +1,5 @@
 <div class="user-page container container-fluid d-flex">
-  <nav class="sidebar navbar navbar-light  navbar-expand-md col-md-3 col-xl-3">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="nav flex-column">
-        <li class="nav-item"></li>
-      </ul>
-    </div>
-  </nav>
+  <%= render partial: 'shared/post_user_side_bar' %>
   <div class="user-box ps-4 col-9 col-md-9 col-xl-9">
     <h2 class="pb-3"><%= "#{@post_user.name}" %></h2>
     <div class="profile_box text-center">

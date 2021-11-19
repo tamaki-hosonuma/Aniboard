@@ -1,0 +1,12 @@
+<div class="post_bottom d-flex ps-2">
+  <div class="me-3">
+    <%= link_to anime_post_path(anime_id: post.anime.id, id: post.id) do %>
+      <p><i class="far fa-comment pe-1"></i><%= post.comments.count %></p>
+    <% end %>
+  </div>
+  <div class="me-3">
+    <%= link_to anime_post_path(anime_id: post.anime.id, id: post.id) do %>
+    <p><i class="far fa-comment"></i>コメントする</p>
+    <% end %>
+  </div>
+</div>

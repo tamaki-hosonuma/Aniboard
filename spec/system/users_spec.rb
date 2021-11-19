@@ -19,7 +19,7 @@ RSpec.describe 'Users', type: :system do
       fill_in 'user_email', with: "#{user.email}"
       fill_in 'user_password', with: "#{user.password}"
       click_button 'ログイン'
-      click_on "test"
+      click_on "マイページ"
       click_on "プロフィール変更"
       click_on "アカウントを削除する"
       expect(page).to have_content "ログインもしくはアカウント登録をしてください"
@@ -30,7 +30,7 @@ RSpec.describe 'Users', type: :system do
     before do
       @post = create(:post)
       login(@post.user)
-      click_on "#{@post.user.name}"
+      click_on "マイページ"
     end
 
     it "have user profile" do
@@ -39,6 +39,23 @@ RSpec.describe 'Users', type: :system do
 
     it "have user image" do
       expect(page).to have_selector("img[src$='assets/default.jpg']")
+    end
+
+    it "display users posts" do
+      click_on "投稿"
+      expect(page).to have_selector(".card-title")
+    end
+
+    it "display users like_posts" do
+      @like = create(:like, post_id: @post.id, user_id: @post.user_id)
+      click_on "いいねした投稿"
+      expect(page).to have_selector(".card-title")
+    end
+
+    it "display users comments" do
+      @comment = create(:comment, post_id: @post.id, user_id: @post.user_id)
+      click_on "コメント"
+      expect(page).to have_selector(".comment_box")
     end
 
     describe "change account information" do
@@ -84,7 +101,7 @@ RSpec.describe 'Users', type: :system do
         expect(@post.user.valid_password?("abcdefg")).to eq(true)
       end
 
-      it "don't change profile without current_password" do
+      it "can't change profile without current_password" do
         fill_in "user_name", with: "change_name"
         fill_in "user_email", with: "test@test.com"
         fill_in "user_profile", with: "I watch a lot of anime"
