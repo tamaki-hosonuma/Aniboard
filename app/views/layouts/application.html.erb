@@ -27,9 +27,9 @@
                   <% if user_signed_in? %>
                     <li class="nav-item">
                       <% if @user.image? %>
-                        <%= image_tag @user.image.thumb.url,class:"nav-link mt-1" %>
+                        <%= image_tag @user.image.thumb.url,class:"nav-link user-image mt-1" %>
                       <% else %>
-                        <%= image_tag asset_path("default.jpg"), :size => '50x50', class:"nav-link mt-1" %>
+                        <%= image_tag asset_path("default.jpg"), :size => '50x50', class:"nav-link user-image mt-1" %>
                       <% end %>
                     </li>
                     <li class="nav-item user_name">
