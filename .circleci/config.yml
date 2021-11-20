@@ -9,7 +9,7 @@ orbs:
 
 executors:
   default:
-    working_directory: ~/aniboard
+    working_directory: ~/aniboard-portfolio
     docker:
       - image: cimg/ruby:2.6.6-browsers
       - image: circleci/postgres:9.5-alpine
