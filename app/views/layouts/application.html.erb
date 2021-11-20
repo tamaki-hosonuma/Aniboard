@@ -11,7 +11,6 @@
     <%= stylesheet_link_tag 'users' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="p-3 bg-img">
@@ -28,7 +27,7 @@
                   <% if user_signed_in? %>
                     <li class="nav-item">
                       <% if @user.image? %>
-                        <%= image_tag @user.image.thumb.url,class:"nav-link mt-1" %>
+                        <%= image_tag @user.image.thumb.url,class:"nav-link user-image mt-1" %>
                       <% else %>
                         <%= image_tag asset_path("default.jpg"), :size => '50x50', class:"nav-link mt-1" %>
                       <% end %>
