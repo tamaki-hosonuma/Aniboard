@@ -77,8 +77,6 @@ jobs:
       - heroku/check-authentication
       - run: sudo npm install --save bootstrap
       - run: sudo npm install --save @popperjs/core
-      - ruby/install-deps
-      - bundle exec rails webpacker:compile
       - setup_remote_docker:
           version: 20.10.7
       - heroku/push-docker-image:
@@ -96,5 +94,8 @@ workflows:
           requires:
             - rspec
             - rubocop
+          filters:
+            branches:
+              only: master
 
 
