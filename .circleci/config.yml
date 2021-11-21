@@ -65,16 +65,27 @@ jobs:
 
   heroku_deploy:
     executor: default
+    parameters:
+     post-deploy:
+      default:
+        - run:
+            command: heroku run rails db:migrate --app $HEROKU_APP_NAME
+      type: steps
     steps:
       - heroku/install
       - checkout
       - heroku/check-authentication
       - run: sudo npm install --save bootstrap
       - run: sudo npm install --save @popperjs/core
+      - run:
+          name: yarn install
+          command: yarn install
+      - run: bundle exec bin/webpack
       - setup_remote_docker:
           version: 20.10.7
       - heroku/push-docker-image:
           process-types: web
+      - steps: << parameters.post-deploy >>
       - heroku/release-docker-image:
           process-types: web
 
