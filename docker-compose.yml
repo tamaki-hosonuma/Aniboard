@@ -18,7 +18,7 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/aniboard
+      - .:/aniboard-portfolio
       - bundle_install:/usr/local/bundle
     ports:
       - "3000:3000"
