@@ -66,11 +66,13 @@ jobs:
   heroku_deploy:
     executor: default
     steps:
+      - heroku/install
       - checkout
+      - heroku/check-authentication
       - run: sudo npm install --save bootstrap
       - run: sudo npm install --save @popperjs/core
-      - heroku/install
-      - heroku/deploy-via-git
+      - heroku/push-docker-image
+      - heroku/release-docker-image
 
 workflows:
   build:
