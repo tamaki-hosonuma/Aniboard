@@ -97,6 +97,5 @@ workflows:
           requires:
             - rspec
             - rubocop
-          filters:
 
 
