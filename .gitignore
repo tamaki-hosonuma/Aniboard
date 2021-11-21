@@ -33,7 +33,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/public/packs
 /public/packs/js/post
 /public/packs-test
 /node_modules
