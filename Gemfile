@@ -37,7 +37,6 @@ gem 'pg', '~> 1.2.3'
 gem 'bundler', '~>2.2.3'
 gem 'rspec_junit_formatter'
 gem 'rails-i18n'
-gem 'rails_12factor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
