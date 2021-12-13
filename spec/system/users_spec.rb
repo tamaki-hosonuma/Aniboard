@@ -26,12 +26,10 @@ RSpec.describe 'Users', type: :system do
       #   expect(page.accept_confirm).to eq "本当によろしいですか？"
       #   sleep 3.0
       #   }. to change { User.count }.by(-1)
-
-
-      expect {
+      expect do
         page.accept_confirm
         expect(page).to have_content "ログインもしくはアカウント登録をしてください"
-      }.to change { User.count }.by(-1)
+      end.to change { User.count }.by(-1)
       # expect(page).to have_content "ログインもしくはアカウント登録をしてください"
     end
   end
