@@ -22,15 +22,10 @@ RSpec.describe 'Users', type: :system do
       click_on "マイページ"
       click_on "プロフィール変更"
       click_on "アカウントを削除する"
-      # expect{
-      #   expect(page.accept_confirm).to eq "本当によろしいですか？"
-      #   sleep 3.0
-      #   }. to change { User.count }.by(-1)
       expect do
         page.accept_confirm
         expect(page).to have_content "ログインもしくはアカウント登録をしてください"
       end.to change { User.count }.by(-1)
-      # expect(page).to have_content "ログインもしくはアカウント登録をしてください"
     end
   end
 

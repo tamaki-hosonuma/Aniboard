@@ -9,7 +9,7 @@ orbs:
 
 executors:
   default:
-    working_directory: ~/aniboard-portfolio
+    working_directory: ~/aniboard
     docker:
       - image: cimg/ruby:2.6.6-browsers
         environment:
@@ -17,7 +17,7 @@ executors:
       - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: app_user
-          POSTGRES_DB: Aniboard_portfolio_test
+          POSTGRES_DB: Aniboard_test
           POSTGRES_PASSWORD: "postgres"
     environment:
       BUNDLE_JOBS: "3"
@@ -77,12 +77,10 @@ jobs:
     steps:
       - heroku/install
       - checkout
-      - setup
+      - setup_remote_docker
       - heroku/check-authentication
       - run: sudo npm install --save bootstrap
       - run: sudo npm install --save @popperjs/core
-      # - setup_remote_docker:
-      #     version: 20.10.7
       - heroku/push-docker-image:
           process-types: web
       - steps: << parameters.post-deploy >>
