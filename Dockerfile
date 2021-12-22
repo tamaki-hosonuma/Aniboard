@@ -16,10 +16,11 @@ COPY Gemfile.lock /aniboard/Gemfile.lock
 ENV BUNDLER_VERSION 2.2.3
 RUN gem install bundler -v $BUNDLER_VERSION
 RUN bundle install
-COPY package*.json ./
+# COPY package*.json ./
+COPY . /aniboard
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-# RUN RAILS_ENV=production rails assets:precompile
+RUN RAILS_ENV=production rails assets:precompile
 CMD ["rails", "server", "-b", "0.0.0.0"]
