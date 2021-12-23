@@ -17,6 +17,8 @@ ENV BUNDLER_VERSION 2.2.3
 RUN gem install bundler -v $BUNDLER_VERSION
 RUN bundle install
 COPY package*.json ./
+RUN npm install
+COPY . .
 # COPY . /aniboard
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

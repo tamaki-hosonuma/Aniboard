@@ -4,7 +4,6 @@ orbs:
   build-tools: circleci/build-tools@2.6.3
   jq: circleci/jq@1.9.1
   ruby: circleci/ruby@1.1.4
-  node: circleci/node@4.7.0
   heroku: circleci/heroku@1.2.6
 
 executors:
@@ -12,6 +11,7 @@ executors:
     working_directory: ~/aniboard
     docker:
       - image: cimg/ruby:2.6.6-browsers
+      - image: circleci/node:latest
         environment:
           RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       - image: circleci/postgres:9.5-alpine
