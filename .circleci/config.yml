@@ -5,13 +5,13 @@ orbs:
   jq: circleci/jq@1.9.1
   ruby: circleci/ruby@1.1.4
   heroku: circleci/heroku@1.2.6
+  node: circleci/node@4.7.0
 
 executors:
   default:
     working_directory: ~/aniboard
     docker:
       - image: cimg/ruby:2.6.6-browsers
-      - image: circleci/node:latest
         environment:
           RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       - image: circleci/postgres:9.5-alpine
