@@ -29,15 +29,15 @@
             <%= f.label :アイコンを削除 %>
           </div>
         <% end %>
-        <div class="field mt-3">
-          <%= f.label :password %> <i>(パスワード変更時のみ入力)</i><br/>
+        <div class="field mt-3 pb-2">
+          <%= f.label :password %>(パスワード変更時のみ入力)<br/>
           <%= f.password_field :password, autocomplete: "new-password" %>
           <% if @minimum_password_length %>
             <br/>
             <em><%= @minimum_password_length %> 文字以上で入力してください</em>
           <% end %>
         </div>
-        <div class="field">
+        <div class="field pt-0">
           <%= f.label :password_confirmation %><br/>
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>

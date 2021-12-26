@@ -5,7 +5,7 @@ orbs:
   jq: circleci/jq@1.9.1
   ruby: circleci/ruby@1.1.4
   heroku: circleci/heroku@1.2.6
-  node: circleci/node@4.7.0
+  node: circleci/node@4.9.0
 
 executors:
   default:
@@ -79,8 +79,9 @@ jobs:
       - checkout
       - setup_remote_docker
       - heroku/check-authentication
-      - run: sudo npm install --save bootstrap
-      - run: sudo npm install --save @popperjs/core
+      - run: bundle exec bin/webpack 
+      # - run: sudo npm install --save bootstrap
+      # - run: sudo npm install --save @popperjs/core
       - heroku/push-docker-image:
           process-types: web
       - steps: << parameters.post-deploy >>
