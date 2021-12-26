@@ -79,6 +79,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - heroku/check-authentication
+      - run: gem install bundler
+      - run: bundle check || bundle install
       - run: bundle exec bin/webpack 
       # - run: sudo npm install --save bootstrap
       # - run: sudo npm install --save @popperjs/core
