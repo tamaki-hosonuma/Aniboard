@@ -93,4 +93,6 @@ workflows:
       - rspec
       - rubocop
       - heroku_deploy
+          requires:
+            - build
 
