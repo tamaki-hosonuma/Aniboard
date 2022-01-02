@@ -81,7 +81,7 @@ jobs:
       - heroku/check-authentication
       - run: gem install bundler
       - run: bundle check || bundle install
-      - run: rails webpacker:install
+      - run: yarn install
       - run: bundle exec bin/webpack
 
       # - run: sudo npm install --save bootstrap
