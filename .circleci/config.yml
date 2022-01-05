@@ -86,8 +86,8 @@ jobs:
       - heroku/push-docker-image:
           process-types: web
       - heroku/release-docker-image:
-      - steps: << parameters.post-deploy >>
           process-types: web
+      - steps: << parameters.post-deploy >>
 
 workflows:
   build:
