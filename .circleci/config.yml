@@ -82,7 +82,8 @@ jobs:
       - run: gem install bundler
       - run: bundle check || bundle install
       - run: yarn install
-      - run: bundle exec bin/webpack
+      # - run: bundle exec bin/webpack
+      - run: rails assets:precompile
       - heroku/push-docker-image:
           process-types: web
       - heroku/release-docker-image:
@@ -94,8 +95,9 @@ workflows:
     jobs:
       - rspec
       - rubocop
-      - heroku_deploy:
-          requires:
-            - rubocop
-            - rspec
+      - heroku_deploy
+      # - heroku_deploy:
+      #     requires:
+      #       - rubocop
+      #       - rspec
 
