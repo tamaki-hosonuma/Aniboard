@@ -19,10 +19,8 @@ RUN bundle install
 COPY package*.json ./
 RUN npm install
 COPY . .
-# COPY . /aniboard
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-# RUN RAILS_ENV=production rails assets:precompile
 CMD ["rails", "server", "-b", "0.0.0.0"]
