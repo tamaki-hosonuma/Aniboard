@@ -41,8 +41,6 @@ https://aniboard-portfolio.herokuapp.com/
 ### __2.感想投稿、星評価__  
 アニメタイトルをクリックし、アニメページから感想を投稿できます。  
 ![感想投稿1](https://user-images.githubusercontent.com/75761741/138659425-05b257e2-3325-4d4c-b3e4-d9cacd249345.png)  
-<br>
-<br>
 評価はクリックにて星の数を決定。0.5単位で最小0.5〜最大5まで。  
 <br>
 <br>
