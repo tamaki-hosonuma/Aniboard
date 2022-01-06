@@ -3,7 +3,6 @@
   <div class="comment_box bg-white mt-2 border border-warning shadow-sm">
     <div class=" d-flex">
       <p class="comment_right mt-1 mb-1 ms-2 me-2">
-
         <%= link_to anime_post_post_user_path(anime_id: @post.anime.id, id: comment.user_id, post_id: @post.id) do %>
           <% if comment.user.name=="ゲスト" %>
             <%= image_tag "/assets/default.jpg", size: '50x50' %>
@@ -11,7 +10,6 @@
             <%= image_tag comment.user.image.thumb.url, size: "50x50", class: "img-fluid" %>
           <% end %>
         <% end %>
-
       </p>
       <p class="comment_left ms-3 mb-0 mt-2 mb-2">
         <%= safe_join(comment.body.split("\n"),tag(:br)) %></p>
