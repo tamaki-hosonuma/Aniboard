@@ -44,6 +44,8 @@ https://aniboard-portfolio.herokuapp.com/
 <br>
 <br>
 評価はクリックにて星の数を決定。0.5単位で最小0.5〜最大5まで。  
+<br>
+<br>
 投稿の編集はマイページ(※)から行えます。(※項目4にて紹介)  
 ![感想投稿2](https://user-images.githubusercontent.com/75761741/138663211-86e96952-c5c9-4c31-8c24-b3ba00657b37.png)  
 <br>
