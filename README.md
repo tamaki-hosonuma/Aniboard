@@ -1,5 +1,5 @@
 # <i class="fas fa-splotch"></i>Aniboard
-![Aniboardトップ](https://user-images.githubusercontent.com/75761741/137582841-6cebfdc2-ae92-4c8a-a65a-6efa60c22002.png)
+![Aniboardトップ](https://user-images.githubusercontent.com/75761741/148376736-0e9d3866-fac1-4577-b699-73bf1915bfbf.png)
 ## 概要
 アニメの感想を共有し、同じ想いの仲間に出会える。  
 他の人の意見を参考に、観たいアニメに出会える。  
@@ -56,7 +56,7 @@ https://aniboard-portfolio.herokuapp.com/
 <br>
 ### __4.マイページ__  
 マイページより、自身のプロフィールとアクションを確認・編集することができます。
-![マイページ](https://user-images.githubusercontent.com/75761741/138668544-feca2f9c-efd0-4cd9-a9e5-1c333424d147.png)
+![マイページ](https://user-images.githubusercontent.com/75761741/148376942-77bf63d2-11ea-4912-844b-de8b34f58ced.png)
 
 ### __5.楽天ブックスDVD＆Blu-ray検索__  
 アニメページの「楽天DVDを表示」をクリックすると、  
