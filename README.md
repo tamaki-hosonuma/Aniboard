@@ -34,7 +34,7 @@ https://aniboard-portfolio.herokuapp.com/
 ## 各機能紹介
 ### __1.アニメタイトル検索__  
 検索フォームにキーワードを入力し🔍をクリックすると、  
-次ページにて結果が表示されます。(あいまい検索)  
+次ページにてアニメタイトルの検索結果が表示されます。(あいまい検索)  
 ![検索機能](https://user-images.githubusercontent.com/75761741/138652523-5a4627e0-38af-4e1c-a3bf-203a3c532bec.png)
 <br>
 <br>
