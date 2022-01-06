@@ -76,14 +76,14 @@ jobs:
       type: steps
     steps:
       - heroku/install
+      - heroku/check-authentication
       - checkout
       - setup_remote_docker
-      - heroku/check-authentication
       - run: gem install bundler
       - run: bundle check || bundle install
       - run: yarn install
       # - run: bundle exec bin/webpack
-      - run: rails assets:precompile
+      - run: rails assets:precompile RAILS_ENV=production
       - heroku/push-docker-image:
           process-types: web
       - heroku/release-docker-image:
