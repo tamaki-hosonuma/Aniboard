@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: :system do
       expect(page).to have_content "アカウント登録が完了しました"
     end
 
-    it "delete account" do
+    it "delete account", js: true do
       user = create(:user)
       visit new_user_session_path
       fill_in 'user_email', with: "#{user.email}"
@@ -22,7 +22,10 @@ RSpec.describe 'Users', type: :system do
       click_on "マイページ"
       click_on "プロフィール変更"
       click_on "アカウントを削除する"
-      expect(page).to have_content "ログインもしくはアカウント登録をしてください"
+      expect do
+        page.accept_confirm
+        expect(page).to have_content "ログインもしくはアカウント登録をしてください"
+      end.to change { User.count }.by(-1)
     end
   end
 

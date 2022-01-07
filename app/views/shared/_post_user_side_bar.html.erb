@@ -18,7 +18,7 @@
     <% else %>
       <ul class="nav flex-column post_user_sidebar">
         <li class="nav-item">
-        <%= link_to "プロフィール",anime_post_post_user_path(id: @post_user.id), class: "nav-i nav-link" %>
+          <%= link_to "プロフィール",anime_post_post_user_path(id: @post_user.id), class: "nav-i nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to "投稿", anime_post_post_user_post_path(id: @post_user.id), class: "nav-i nav-link" %>

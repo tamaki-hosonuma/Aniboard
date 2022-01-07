@@ -28,7 +28,7 @@ li{
 }
 
 a:link, a:visited, a:hover, a:active {
-  color: #FFC107;
+  color: #FFA000;
 }
 
 .filelabel{
@@ -83,6 +83,8 @@ a{
   border-radius: 50%;
 }
 
-.container-fluid > .rogo-title{
+.container-fluid > .logo-title{
   color: #FFA000;
+  font-family: fantasy;
+  font-weight: bold;
 }

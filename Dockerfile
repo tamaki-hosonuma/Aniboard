@@ -1,13 +1,24 @@
 FROM ruby:2.6.6
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client chromium-driver 
-RUN mkdir /aniboard-portfolio
-WORKDIR /aniboard-portfolio
-COPY Gemfile /aniboard-portfolio/Gemfile
-COPY Gemfile.lock /aniboard-portfolio/Gemfile.lock
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+SHELL ["/bin/bash", "-c"]
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client chromium-driver vim
+RUN apt-get install -y nodejs npm && npm install n -g && n 14.17.0
+RUN set -x && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo 'deb http://dl.yarnpkg.com/debian/ stable main' > /etc/apt/sources.list.d/yarn.list
+
+RUN set -x && apt-get update -qq && \
+  apt-get install -yq build-essential yarn
+RUN mkdir /aniboard
+WORKDIR /aniboard
+COPY Gemfile /aniboard/Gemfile
+COPY Gemfile.lock /aniboard/Gemfile.lock
 ENV BUNDLER_VERSION 2.2.3
 RUN gem install bundler -v $BUNDLER_VERSION
 RUN bundle install
-COPY . /aniboard-portfolio
+COPY package*.json ./
+RUN npm install
+COPY . .
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]

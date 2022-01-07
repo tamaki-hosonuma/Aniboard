@@ -4,14 +4,16 @@ orbs:
   build-tools: circleci/build-tools@2.6.3
   jq: circleci/jq@1.9.1
   ruby: circleci/ruby@1.1.4
-  node: circleci/node@4.7.0
   heroku: circleci/heroku@1.2.6
+  node: circleci/node@5.0.0
 
 executors:
   default:
-    working_directory: ~/aniboard-portfolio
+    working_directory: ~/aniboard
     docker:
       - image: cimg/ruby:2.6.6-browsers
+        environment:
+          RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
       - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: app_user
@@ -29,6 +31,7 @@ commands:
   setup:
     steps:
       - checkout
+      - setup_remote_docker
       - build-tools/install-ci-tools
       - jq/install
       - browser-tools/install-chrome
@@ -73,17 +76,18 @@ jobs:
       type: steps
     steps:
       - heroku/install
-      - checkout
       - heroku/check-authentication
-      - run: sudo npm install --save bootstrap
-      - run: sudo npm install --save @popperjs/core
-      - setup_remote_docker:
-          version: 20.10.7
+      - checkout
+      - setup_remote_docker
+      - run: gem install bundler
+      - run: bundle check || bundle install
+      - run: yarn install
+      - run: rails assets:precompile RAILS_ENV=production
       - heroku/push-docker-image:
           process-types: web
-      - steps: << parameters.post-deploy >>
       - heroku/release-docker-image:
           process-types: web
+      - steps: << parameters.post-deploy >>
 
 workflows:
   build:
@@ -92,10 +96,6 @@ workflows:
       - rubocop
       - heroku_deploy:
           requires:
-            - rspec
             - rubocop
-          filters:
-            branches:
-              only: master
-
+            - rspec
 
