@@ -2,6 +2,7 @@
   text-align: center;
   .results{
     text-decoration: none;
+    color: #FFF;
   }
 }
 .anime-main{
@@ -10,4 +11,22 @@
 
 .post-card{
   text-align: start;
+}
+
+.result-card{
+  background-color: rgba(255,160,0,0.3);
+  margin: 0 auto;
+  width: 50vw;
+  border-radius: 5px;
+}
+
+.result-title{
+  // background-color: #A9CE05;
+  background-color: rgba(169, 206, 5, 0.5);
+  width: 40vw;
+  height: 15vh;
+  margin: 0 auto;
+  align-items: center;
+  border-radius: 4px;
+  // padding-top: ;
 }
