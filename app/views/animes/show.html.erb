@@ -1,8 +1,25 @@
-<div class="anime-main min-vh-100">
-  <div class="anime-box">
+<div class="anime-main min-vh-100 row">
+  <div class="anime-box row col-8 col-md-8 col-xl-8">
     <h4 class="anime-title"><%= @anime.title %></h4>
-    <%= link_to "感想を投稿する", new_anime_post_path(anime_id: "#{@anime.id}"), class:"btn mt-4 mb-4" %>
-    <%= link_to "楽天DVDを表示", rakuten_search_path(keyword: @anime.title, anime_id: @anime.id), class:"btn mt-4 mb-4" %>
+    <div class="anime-left col-12 col-md-6 col-xl-6">
+      <%= link_to image_tag("#{ @anime.image}"),"#{@anime.official_site_url}" %>
+    </div>
+    <div class="anime-right col-12 col-md-6 col-xl-6">
+      <p><%= @anime.year %>年</p>
+      <p><%= @anime.media_text %></p>
+      <p>
+        <% if @anime.official_site_url? %>
+          <%= link_to "公式サイト", "#{@anime.official_site_url}", target: :_blank, rel: "noopener noreferrer" %>
+        <% end %>
+      </p>
+      <p>
+        <% if @anime.twitter_username.present? %>
+          <%= link_to "Twitter", "https://twitter.com/#{@anime.twitter_username}", target: :_blank, rel: "noopener noreferrer" %>
+        <% end %>
+      </p>
+      <%= link_to "感想を投稿する", new_anime_post_path(anime_id: "#{@anime.id}"), class:"btn mt-4 mb-4" %>
+      <%= link_to "楽天DVDを表示", rakuten_search_path(keyword: @anime.title, anime_id: @anime.id), class:"btn mt-4 mb-4" %>
+    </div>
     <div class="post-box">
       <h5 class="pt-2 pb-2">投稿一覧</h5>
       <% if @anime.posts.present? %>
