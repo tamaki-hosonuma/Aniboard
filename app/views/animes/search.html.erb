@@ -1,10 +1,19 @@
-<div class="results-box conitainer">
-  <%# <div class=""> %>
-    <h4>検索結果</h4>
-    <div class="result-card pt-1 pb-1 shadow-sm">
-      <% @results.each do |anime| %>
-        <div class="result-title mt-3 mb-3 d-flex align-items-center justify-content-center shadow-sm"><%= link_to anime.title, anime_path(anime.id), class:"results" %></div>
-      <% end %>
-    </div>
-  <%# </div> %>
+<div class="results-main conitainer">
+  <h4 class="result-header">検索結果</h4>
+  <div class="result-box pt-1 pb-1 shadow-sm row">
+    <% @results.each do |anime| %>
+      <div class="card col-10 col-md-5 col-xl-5 result-card mt-3 mb-3 shadow-sm text-start">
+        <%= link_to anime_path(anime.id) do %>
+          <div>
+            <%= image_tag "#{anime.image}", size: '180x200', class: "anime-image card-img-top" %>
+            <div class="anime-detail d-flex">
+              <p class="ps-2 pe-2 mt-2 media-box"><%= anime.media_text %></p>
+              <p class="ps-2 pe-2 mt-2 ms-1 year-box"><%= anime.year %>年</p>
+            </div>
+            <p class="results card-title"><%= anime.title %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
