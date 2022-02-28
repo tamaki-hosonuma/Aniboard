@@ -99,7 +99,7 @@ workflows:
             - rubocop
             - rspec
           filters:
-          branches:
-            only:
-              - master
+            branches:
+              only:
+                - master
 
