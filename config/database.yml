@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   database: Aniboard_test
-  host: <%= ENV['PGHOST'] || 'db' %>
+  host: <%= ENV["PGHOST"] || 'db' %>
   password: <%= ENV["POSTGRES_PASSWORD"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
